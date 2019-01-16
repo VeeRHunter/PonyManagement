@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "575828568563",
+    "firebase_url": "https://ponymanagement-80b73.firebaseio.com",
+    "project_id": "ponymanagement-80b73",
+    "storage_bucket": "ponymanagement-80b73.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575828568563:android:3ea3d044961adc32",
+        "android_client_info": {
+          "package_name": "pony.managment.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "575828568563-gimerq7dkb4avl6q6d4bm9ei4ncntmu1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCV-3V1gDe21ZCLHLi_Hqt-ZghAdnCmg-M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
