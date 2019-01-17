@@ -1,14 +1,98 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+
+  <ion-row class="header-component">
+    <ion-col col-2></ion-col>
+
+    <ion-col col-8>
+      <ion-row class="full-height">
+        <span class="home-title">
+          HOME
+        </span>
+      </ion-row>
+    </ion-col>
+
+    <ion-col col-2>
+      <ion-row class="full-height">
+        <img src="assets/imgs/sample.jpg" class="profile-image" (click)="gotoMyProfile()"/>
+      </ion-row>
+    </ion-col>
+
+  </ion-row>
+
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-row class="first-row">
+    <ion-row class="list-row">
+      <ion-col col-6>
+        <ion-row class="full-height">
+          <ion-row class="item-image">
+            <img src="assets/imgs/sample.jpg" (click)="gotoAddSupplier()" />
+          </ion-row>
+          <ion-row class="item-title">
+            <span (click)="gotoAddSupplier()">
+              Add Supplier
+            </span>
+          </ion-row>
+        </ion-row>
+      </ion-col>
+
+      <ion-col col-6>
+        <ion-row class="full-height">
+          <ion-row class="item-image">
+            <img src="assets/imgs/sample.jpg" (click)="gotoSupplierList()" />
+          </ion-row>
+          <ion-row class="item-title">
+            <span (click)="gotoSupplierList()">
+              Supplier List
+            </span>
+          </ion-row>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row class="list-row">
+      <ion-col col-3>
+      </ion-col>
+      <ion-col col-6>
+        <ion-row class="full-height">
+          <ion-row class="item-image">
+            <img src="assets/imgs/sample.jpg" />
+          </ion-row>
+          <ion-row class="item-title">
+            <span>
+              Product List
+            </span>
+          </ion-row>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="list-row">
+      <ion-col col-6>
+        <ion-row class="full-height">
+          <ion-row class="item-image">
+            <img src="assets/imgs/sample.jpg" />
+          </ion-row>
+          <ion-row class="item-title">
+            <span>
+              Order
+            </span>
+          </ion-row>
+        </ion-row>
+      </ion-col>
+
+      <ion-col col-6>
+        <ion-row class="full-height">
+          <ion-row class="item-image">
+            <img src="assets/imgs/sample.jpg" />
+          </ion-row>
+          <ion-row class="item-title">
+            <span>
+              Search
+            </span>
+          </ion-row>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-row>
 </ion-content>

@@ -1,0 +1,16 @@
+page-welcome {
+    .normal-welcom {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        ion-icon {
+            margin: auto;
+            font-size: 3rem;
+            color: black;
+        }
+        button {
+            margin: auto;
+            width: 100%;
+            box-shadow: 1px 1px 1px 1px black !important;
+        }
+    }
+}

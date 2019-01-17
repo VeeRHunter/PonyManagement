@@ -1,3 +1,26 @@
 page-account-create {
-
+    .check-row {
+        margin-top: 35%;
+        .check-icon {
+            font-size: 10rem;
+            width: 130px;
+            height: 130px;
+            margin: auto;
+            border: 5px solid black;
+            border-radius: 10px;
+            ion-icon {
+                // width: 100%;
+                margin: auto;
+            }
+        }
+    }
+    .check-description {
+        margin-top: 30px;
+        span {
+            font-size: 25px;
+            font-weight: bold;
+            margin: auto;
+            text-align: center;
+        }
+    }
 }

@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { SupplierAddPage } from './supplier-add';
+import { WelcomePage } from './welcome';
 import { SharedModule } from '../../app/share.module';
 
 @NgModule({
   declarations: [
-    SupplierAddPage,
+    WelcomePage,
   ],
   imports: [
-    IonicPageModule.forChild(SupplierAddPage),
+    IonicPageModule.forChild(WelcomePage),
     SharedModule,
   ],
 })
-export class SupplierAddPageModule { }
+export class WelcomePageModule { }

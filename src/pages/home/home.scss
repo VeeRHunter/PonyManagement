@@ -1,3 +1,30 @@
 page-home {
-
+    .home-title {
+        font-size: 3rem;
+        margin: auto;
+        text-align: center;
+    }
+    .profile-image {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin: auto;
+    }
+    .list-row {
+        margin: 10px 0px;
+        .item-image {
+            img {
+                width: 100%;
+                height: 100%;
+                margin: auto;
+            }
+        }
+        .item-title {
+            span {
+                margin: auto;
+                font-size: 18px;
+                padding: 10px 0px;
+            }
+        }
+    }
 }

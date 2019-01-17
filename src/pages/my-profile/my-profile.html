@@ -6,13 +6,117 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>my-profile</ion-title>
-  </ion-navbar>
+  <ion-row class="header-component">
+    <ion-col col-2></ion-col>
+
+    <ion-col col-8>
+    </ion-col>
+
+    <ion-col col-2>
+      <ion-row class="full-height">
+        <ion-icon name="md-trash" (click)="logout()"></ion-icon>
+      </ion-row>
+    </ion-col>
+
+  </ion-row>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-row class="first-row">
+    <ion-row class="profile-image">
+      <ion-row class="image-row">
+        <img src="{{userData.image}}" />
+      </ion-row>
+      <ion-row class="image-title">
+        <span>My Profile</span>
+      </ion-row>
+    </ion-row>
 
+    <ion-row class="each-profile first-profile">
+      <ion-col col-1>
+      </ion-col>
+      <ion-col col-9>
+        <ion-row class="full-height border-row">
+          <span class="profile-name" *ngIf="nameState">
+            {{userData.username}}
+          </span>
+          <input type="text" placeholder="Username" class="profile-input" [(ngModel)]="userData.username" *ngIf="!nameState">
+        </ion-row>
+      </ion-col>
+      <ion-col col-2>
+        <ion-row class="full-height">
+          <ion-icon name="md-create" class="edit-icon" (click)="editUsername()" *ngIf="nameState"></ion-icon>
+          <ion-icon name="md-checkmark-circle" class="change-icon" (click)="changeUsername()" *ngIf="!nameState"></ion-icon>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="each-profile">
+      <ion-col col-1>
+      </ion-col>
+      <ion-col col-9>
+        <ion-row class="full-height border-row">
+          <span class="profile-name" *ngIf="emailState">
+            {{userData.email}}
+          </span>
+          <input type="email" placeholder="Email Address" class="profile-input" [(ngModel)]="userData.email" *ngIf="!emailState">
+        </ion-row>
+      </ion-col>
+      <ion-col col-2>
+        <ion-row class="full-height">
+          <ion-icon name="md-create" class="edit-icon" (click)="editEmail()" *ngIf="emailState"></ion-icon>
+          <ion-icon name="md-checkmark-circle" class="change-icon" (click)="changeEmail()" *ngIf="!emailState"></ion-icon>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="each-profile">
+      <ion-col col-1>
+      </ion-col>
+      <ion-col col-9>
+        <ion-row class="full-height border-row">
+          <span class="profile-name" *ngIf="phoneState">
+            {{userData.phonenumber}}
+          </span>
+          <input type="text" placeholder="Phone Number" class="profile-input" [(ngModel)]="userData.phonenumber" *ngIf="!phoneState">
+        </ion-row>
+      </ion-col>
+      <ion-col col-2>
+        <ion-row class="full-height">
+          <ion-icon name="md-create" class="edit-icon" (click)="editPhone()" *ngIf="phoneState"></ion-icon>
+          <ion-icon name="md-checkmark-circle" class="change-icon" (click)="changePhone()" *ngIf="!phoneState"></ion-icon>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="each-profile">
+      <ion-col col-1>
+      </ion-col>
+      <ion-col col-9>
+        <ion-row class="full-height border-row">
+          <span class="change-picture">
+            Change Picture
+          </span>
+        </ion-row>
+      </ion-col>
+      <ion-col col-2>
+      </ion-col>
+    </ion-row>
+
+
+  </ion-row>
+
+  <ion-row class="home-button-row">
+    <ion-row class="home-icon" (click)="gotoHome()">
+      <ion-icon name="ios-home">
+      </ion-icon>
+    </ion-row>
+    <ion-row class="home-title" (click)="gotoHome()">
+      <span>
+        HOME
+      </span>
+    </ion-row>
+  </ion-row>
 </ion-content>

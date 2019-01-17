@@ -6,13 +6,126 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>supplier-add</ion-title>
-  </ion-navbar>
+  <ion-row class="header-component">
+    <ion-col col-3></ion-col>
+
+    <ion-col col-6>
+      <ion-row class="full-height">
+        <span class="home-title">
+          Add Supplier
+        </span>
+      </ion-row>
+    </ion-col>
+
+    <ion-col col-3>
+      <ion-row class="full-height">
+        <ion-icon name="md-person-add"></ion-icon>
+      </ion-row>
+    </ion-col>
+
+  </ion-row>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-row class="first-row">
 
+    <form #userProfile="ngForm" id="userProfile" (ngSubmit)="addSupplier(userProfile)" novalidate>
+
+      <ion-row class="user-input-row signin-first">
+
+        <mat-form-field class="example-full-width">
+          <input matInput type="text" placeholder="Company Name" [(ngModel)]="userData.companyname" required name="companyname">
+
+          <mat-error>
+            Company Name is required.
+          </mat-error>
+        </mat-form-field>
+
+      </ion-row>
+
+      <ion-row class="user-input-row">
+
+        <mat-form-field class="example-full-width">
+          <input matInput type="text" placeholder="Name" [(ngModel)]="userData.name" required name="name">
+          <mat-error>
+            Name is required.
+          </mat-error>
+        </mat-form-field>
+
+      </ion-row>
+
+      <ion-row class="user-input-row">
+
+        <mat-form-field class="example-full-width">
+          <input matInput type="text" placeholder="Surname" [(ngModel)]="userData.surname" required name="surname">
+          <mat-error>
+            Surname is required.
+          </mat-error>
+        </mat-form-field>
+
+      </ion-row>
+
+      <ion-row class="user-input-row">
+
+        <mat-form-field class="example-full-width">
+          <input matInput type="text" placeholder="Phone Number" [(ngModel)]="userData.phonenumber" required name="phonenumber">
+          <mat-error>
+            Phone Number is required.
+          </mat-error>
+        </mat-form-field>
+
+      </ion-row>
+
+      <ion-row class="user-input-row">
+
+        <ion-row class="add-picture">
+          <ion-col col-2>
+            <ion-row class="full-height">
+              <ion-icon name="md-add"></ion-icon>
+            </ion-row>
+          </ion-col>
+          <ion-col col-10>
+            <ion-row class="full-height">
+              <span class="picture-span">
+                Add Picture
+              </span>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+
+      </ion-row>
+
+      <button mat-rised-button id="add_supplier">Add Supplier</button>
+
+    </form>
+  </ion-row>
 </ion-content>
+<ion-footer>
+  <ion-row class="footer-component">
+    <ion-col col-3>
+      <ion-row class="full-height">
+        <ion-row class="footer-icon">
+          <ion-icon name="ios-home" (click)="gotoHome()"></ion-icon>
+        </ion-row>
+        <ion-row class="footer-span">
+          <span (click)="gotoHome()">HOME</span>
+        </ion-row>
+      </ion-row>
+    </ion-col>
+    <ion-col col-6></ion-col>
+    <ion-col col-3>
+      <ion-row class="full-height">
+        <ion-row class="footer-icon">
+          <ion-icon name="md-person-add" (click)="clickAdd()"></ion-icon>
+        </ion-row>
+        <ion-row class="footer-span">
+          <span (click)="clickAdd()">
+            ADD
+          </span>
+        </ion-row>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-footer>

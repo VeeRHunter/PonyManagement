@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the SupplierListPage page.
+ * Generated class for the WelcomePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,28 +10,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-supplier-list',
-  templateUrl: 'supplier-list.html',
+  selector: 'page-welcome',
+  templateUrl: 'welcome.html',
 })
-export class SupplierListPage {
-  step = 0;
+export class WelcomePage {
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SupplierListPage');
+    console.log('ionViewDidLoad WelcomePage');
   }
 
-  setStep(index: number) {
-    this.step = index;
+  gotoSignIn() {
+    this.navCtrl.push('LoginPage');
   }
 
-  nextStep() {
-    this.step++;
-  }
-
-  prevStep() {
-    this.step--;
+  gotoSignUp() {
+    this.navCtrl.push('RegisterPage');
   }
 
 }

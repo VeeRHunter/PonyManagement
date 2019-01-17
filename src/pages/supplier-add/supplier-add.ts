@@ -15,11 +15,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SupplierAddPage {
 
+  public userData = { "companyname": "", "name": "", "surname": "", "phonenumber": "", "image": "" };
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SupplierAddPage');
+  }
+
+  addSupplier(supplierData) {
+    if (supplierData.valid) {
+      this.navCtrl.push('SupplierAddedPage');
+    }
+  }
+
+  clickAdd() {
+    document.getElementById('add_supplier').click();
+  }
+
+  gotoHome() {
+    this.navCtrl.push('HomePage');
   }
 
 }

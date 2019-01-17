@@ -1,3 +1,55 @@
 page-supplier-add {
-
+    .header-component {
+        .home-title {
+            margin: auto;
+            font-size: 2.3rem;
+        }
+        ion-icon {
+            margin: auto;
+            font-size: 3rem;
+            margin-left: unset;
+        }
+    }
+    #userProfile {
+        width: 70%;
+        margin: auto;
+    }
+    .signin-first {
+        margin-top: 40px !important;
+    }
+    .user-input-row {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        .add-picture {
+            ion-icon {
+                font-size: 2.5rem;
+                margin: auto;
+                font-weight: bold;
+            }
+            .picture-span {
+                margin: auto;
+                text-align: center;
+                width: 100%;
+                border: 1px solid black;
+                padding: 5px 0px;
+            }
+        }
+    }
+    #add_supplier{
+        display: none;
+    }
+    .footer-component {
+        height: 70px;
+        .footer-icon {
+            ion-icon {
+                font-size: 3rem;
+                margin: auto;
+            }
+        }
+        .footer-span {
+            span {
+                margin: auto;
+            }
+        }
+    }
 }

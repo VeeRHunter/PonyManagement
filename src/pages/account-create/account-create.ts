@@ -20,6 +20,9 @@ export class AccountCreatePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AccountCreatePage');
+    setTimeout(() => {
+      this.navCtrl.setRoot('LoginPage');
+    }, 3000);
   }
 
 }
