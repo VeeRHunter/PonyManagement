@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { DataProvider } from '../../providers/data/data';
+import { LoadingProvider } from '../../providers/loading/loading';
+import { ToastProvider } from '../../providers/toast/toast';
 
 /**
  * Generated class for the HomePage page.
@@ -15,11 +18,31 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public eachUser: any = {};
+
+  public profileImage: any;
+  public enableShow = false;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public dataProvider: DataProvider,
+    public loading: LoadingProvider,
+    public toast: ToastProvider,
+  ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
+    this.loading.show();
+    this.dataProvider.getCurrentUser().snapshotChanges().subscribe((account) => {
+      this.loading.hide();
+      this.eachUser = account.payload.val();
+      this.profileImage = this.eachUser.img;
+      this.enableShow = true;
+      console.log(this.eachUser);
+      console.log(this.profileImage);
+    })
   }
 
   gotoAddSupplier() {

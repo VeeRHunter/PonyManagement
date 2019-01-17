@@ -24,6 +24,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FirebaseProvider } from '../providers/firebase/firebase';
+import { DataProvider } from '../providers/data/data';
+import { ServiceProvider } from '../providers/service/service';
 
 
 
@@ -71,7 +73,9 @@ firebase.initializeApp(firebaseConfig);
     AuthProvider,
     LoadingProvider,
     ToastProvider,
-    FirebaseProvider
+    FirebaseProvider,
+    DataProvider,
+    ServiceProvider
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

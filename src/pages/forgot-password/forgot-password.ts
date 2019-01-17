@@ -4,7 +4,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
 
 /**
- * Generated class for the LoginPage page.
+ * Generated class for the ForgotPasswordPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,10 +12,10 @@ import { AuthProvider } from '../../providers/auth/auth';
 
 @IonicPage()
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html',
+  selector: 'page-forgot-password',
+  templateUrl: 'forgot-password.html',
 })
-export class LoginPage {
+export class ForgotPasswordPage {
 
   public emailFormControl = new FormControl('', [
     Validators.email,
@@ -34,23 +34,15 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    console.log('ionViewDidLoad ForgotPasswordPage');
     this.authProvider.setNavController(this.navCtrl);
   }
 
-  Login(userProfile) {
+  sendRequest(userProfile) {
     if (userProfile.valid && this.emailFormControl.valid) {
-      this.authProvider.emailLogin(this.userData.email, this.userData.password);
+      this.authProvider.sendPasswordReset(this.userData.email);
       // this.navCtrl.push('HomePage');
     }
-  }
-
-  gotoSignup() {
-    // this.navCtrl.push('SignupPage');
-  }
-
-  forgotPassword() {
-    this.navCtrl.push('ForgotPasswordPage');
   }
 
 }

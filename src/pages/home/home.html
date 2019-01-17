@@ -12,8 +12,8 @@
     </ion-col>
 
     <ion-col col-2>
-      <ion-row class="full-height">
-        <img src="assets/imgs/sample.jpg" class="profile-image" (click)="gotoMyProfile()"/>
+      <ion-row class="full-height" *ngIf="profileImage">
+        <img src="{{profileImage}}" class="profile-image" (click)="gotoMyProfile()" />
       </ion-row>
     </ion-col>
 

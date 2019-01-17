@@ -6,13 +6,121 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>supplier-detail</ion-title>
-  </ion-navbar>
+  <ion-row class="header-component">
+    <ion-col col-2></ion-col>
+
+    <ion-col col-8>
+    </ion-col>
+
+    <ion-col col-2>
+      <ion-row class="full-height">
+        <ion-icon name="md-log-out" (click)="logout()"></ion-icon>
+      </ion-row>
+    </ion-col>
+
+  </ion-row>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-row class="first-row" *ngIf="enableShow">
+    <ion-row class="profile-image">
+      <ion-row class="image-row">
+        <img src="{{supplierData.img}}" (click)="changeProfilePicture()" />
+      </ion-row>
+      <ion-row class="image-title">
+        <span>{{supplierData.companyname}}</span>
+      </ion-row>
+    </ion-row>
 
+    <ion-row class="each-profile first-profile">
+      <ion-col col-1>
+      </ion-col>
+      <ion-col col-9>
+        <ion-row class="full-height border-row">
+          <span class="profile-name" *ngIf="nameState">
+            {{supplierData.username}}
+          </span>
+          <input type="text" placeholder="Name" class="profile-input" [(ngModel)]="supplierData.username" *ngIf="!nameState">
+        </ion-row>
+      </ion-col>
+      <ion-col col-2>
+        <ion-row class="full-height">
+          <ion-icon name="md-create" class="edit-icon" (click)="editName()" *ngIf="nameState"></ion-icon>
+          <ion-icon name="md-checkmark-circle" class="change-icon" (click)="changeName()" *ngIf="!nameState"></ion-icon>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="each-profile">
+      <ion-col col-1>
+      </ion-col>
+      <ion-col col-9>
+        <ion-row class="full-height border-row">
+          <span class="profile-name" *ngIf="surnameState">
+            {{supplierData.surname}}
+          </span>
+          <input type="text" placeholder="Surname" class="profile-input" [(ngModel)]="supplierData.surname" *ngIf="!surnameState">
+        </ion-row>
+      </ion-col>
+      <ion-col col-2>
+        <ion-row class="full-height">
+          <ion-icon name="md-create" class="edit-icon" (click)="editSurname()" *ngIf="surnameState"></ion-icon>
+          <ion-icon name="md-checkmark-circle" class="change-icon" (click)="changeSurname()" *ngIf="!surnameState"></ion-icon>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="each-profile">
+      <ion-col col-1>
+      </ion-col>
+      <ion-col col-9>
+        <ion-row class="full-height border-row">
+          <span class="profile-name" *ngIf="phoneState">
+            {{supplierData.phonenumber}}
+          </span>
+          <input type="text" placeholder="Phone Number" class="profile-input" [(ngModel)]="supplierData.phonenumber"
+            *ngIf="!phoneState">
+        </ion-row>
+      </ion-col>
+      <ion-col col-2>
+        <ion-row class="full-height">
+          <ion-icon name="md-create" class="edit-icon" (click)="editPhone()" *ngIf="phoneState"></ion-icon>
+          <ion-icon name="md-checkmark-circle" class="change-icon" (click)="changePhone()" *ngIf="!phoneState"></ion-icon>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="each-profile product-item">
+      <ion-col col-2>
+        <ion-row class="full-height">
+          <ion-icon name="md-add-circle" class="add-icon"></ion-icon>
+        </ion-row>
+      </ion-col>
+      <ion-col col-9>
+        <ion-row class="full-height">
+          <button mat-stroked-button (click)="addProduct()">
+            Add Product
+          </button>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="each-profile product-item">
+      <ion-col col-2>
+        <ion-row class="full-height">
+          <ion-icon name="md-search" class="search-icon"></ion-icon>
+        </ion-row>
+      </ion-col>
+      <ion-col col-9>
+        <ion-row class="full-height">
+          <button mat-stroked-button (click)="seeProduct()">
+            See Product
+          </button>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+  </ion-row>
 </ion-content>

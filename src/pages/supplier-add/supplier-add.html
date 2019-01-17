@@ -33,7 +33,30 @@
 
     <form #userProfile="ngForm" id="userProfile" (ngSubmit)="addSupplier(userProfile)" novalidate>
 
-      <ion-row class="user-input-row signin-first">
+      <ion-row class="profile-image signin-first">
+        <ion-col col-6>
+          <ion-row class="full-height">
+            <span>
+              Add Picture
+            </span>
+          </ion-row>
+        </ion-col>
+        <ion-col col-6>
+          <ion-row class="full-height">
+            <ion-row>
+              <ion-icon name="md-contact" (click)="uploadPicture()" *ngIf="userData.image==''"></ion-icon>
+              <img src="{{userData.image}}" (click)="uploadPicture()" *ngIf="userData.image!=''">
+            </ion-row>
+          </ion-row>
+        </ion-col>
+        <ion-row class="photo-error" *ngIf="clickSignUp && userData.image==''">
+          <span>
+            Supplier picture is required.
+          </span>
+        </ion-row>
+      </ion-row>
+
+      <ion-row class="user-input-row">
 
         <mat-form-field class="example-full-width">
           <input matInput type="text" placeholder="Company Name" [(ngModel)]="userData.companyname" required name="companyname">
@@ -70,15 +93,21 @@
       <ion-row class="user-input-row">
 
         <mat-form-field class="example-full-width">
-          <input matInput type="text" placeholder="Phone Number" [(ngModel)]="userData.phonenumber" required name="phonenumber">
-          <mat-error>
+          <input matInput type="text" placeholder="Phone Number" [formControl]="phoneControl" [(ngModel)]="userData.phonenumber"
+            required name="phonenumber">
+
+          <mat-error *ngIf="phoneControl.hasError('required')">
             Phone Number is required.
+          </mat-error>
+
+          <mat-error *ngIf="phoneControl.hasError('pattern') && !phoneControl.hasError('required')">
+            Please insert a valid Phone Number.
           </mat-error>
         </mat-form-field>
 
       </ion-row>
 
-      <ion-row class="user-input-row">
+      <!-- <ion-row class="user-input-row">
 
         <ion-row class="add-picture">
           <ion-col col-2>
@@ -87,7 +116,7 @@
             </ion-row>
           </ion-col>
           <ion-col col-10>
-            <ion-row class="full-height">
+            <ion-row class="full-height" (click)="">
               <span class="picture-span">
                 Add Picture
               </span>
@@ -95,7 +124,7 @@
           </ion-col>
         </ion-row>
 
-      </ion-row>
+      </ion-row> -->
 
       <button mat-rised-button id="add_supplier">Add Supplier</button>
 

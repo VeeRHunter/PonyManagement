@@ -14,7 +14,7 @@
 
     <ion-col col-2>
       <ion-row class="full-height">
-        <ion-icon name="md-trash" (click)="logout()"></ion-icon>
+        <ion-icon name="md-log-out" (click)="logout()"></ion-icon>
       </ion-row>
     </ion-col>
 
@@ -59,15 +59,15 @@
       <ion-col col-9>
         <ion-row class="full-height border-row">
           <span class="profile-name" *ngIf="emailState">
-            {{userData.email}}
+            {{userData.surname}}
           </span>
-          <input type="email" placeholder="Email Address" class="profile-input" [(ngModel)]="userData.email" *ngIf="!emailState">
+          <input type="text" placeholder="Surname" class="profile-input" [(ngModel)]="userData.surname" *ngIf="!emailState">
         </ion-row>
       </ion-col>
       <ion-col col-2>
         <ion-row class="full-height">
-          <ion-icon name="md-create" class="edit-icon" (click)="editEmail()" *ngIf="emailState"></ion-icon>
-          <ion-icon name="md-checkmark-circle" class="change-icon" (click)="changeEmail()" *ngIf="!emailState"></ion-icon>
+          <ion-icon name="md-create" class="edit-icon" (click)="editSurname()" *ngIf="emailState"></ion-icon>
+          <ion-icon name="md-checkmark-circle" class="change-icon" (click)="changeSurname()" *ngIf="!emailState"></ion-icon>
         </ion-row>
       </ion-col>
     </ion-row>
@@ -96,7 +96,7 @@
       </ion-col>
       <ion-col col-9>
         <ion-row class="full-height border-row">
-          <span class="change-picture">
+          <span class="change-picture" (click)="changeProfilePicture()">
             Change Picture
           </span>
         </ion-row>
@@ -107,16 +107,22 @@
 
 
   </ion-row>
-
-  <ion-row class="home-button-row">
-    <ion-row class="home-icon" (click)="gotoHome()">
-      <ion-icon name="ios-home">
-      </ion-icon>
-    </ion-row>
-    <ion-row class="home-title" (click)="gotoHome()">
-      <span>
-        HOME
-      </span>
-    </ion-row>
-  </ion-row>
 </ion-content>
+
+<ion-footer>
+  <ion-row class="footer-component">
+    <ion-col col-3>
+    </ion-col>
+    <ion-col col-6></ion-col>
+    <ion-col col-3>
+      <ion-row class="full-height">
+        <ion-row class="footer-icon">
+          <ion-icon name="ios-home" (click)="gotoHome()"></ion-icon>
+        </ion-row>
+        <ion-row class="footer-span">
+          <span (click)="gotoHome()">HOME</span>
+        </ion-row>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-footer>

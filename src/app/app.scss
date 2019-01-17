@@ -144,9 +144,7 @@ form {
     }
     .mat-input-underline {
         display: none;
-    } // mat-form-field {
-    //     border-bottom: 2px solid blue;
-    // }
+    }
 }
 
 button {
@@ -160,7 +158,11 @@ button {
         .mat-expansion-panel-header-title {
             text-align: center;
             display: block;
+            margin-right: 0px;
         }
+    }
+    .mat-expansion-indicator {
+        display: none;
     }
 }
 

@@ -26,7 +26,10 @@ export class LoadingProvider {
   }
 
   hide() {
-    this.loading.dismiss();
+    if (this.loading) {
+      this.loading.dismiss();
+      this.loading = null;
+    }
   }
 
 }

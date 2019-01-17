@@ -32,6 +32,10 @@ export class FirebaseProvider {
     firebase.database().ref('accounts/' + firebase.auth().currentUser.uid).update({ 'username': updatedUserName });
   }
 
+  updateSurName(updatedSurName) {
+    firebase.database().ref('accounts/' + firebase.auth().currentUser.uid).update({ 'surname': updatedSurName });
+  }
+
   updatePhoneNumber(updatedPhoneNumber) {
     firebase.database().ref('accounts/' + firebase.auth().currentUser.uid).update({ 'phonenumber': updatedPhoneNumber });
   }
@@ -76,6 +80,7 @@ export class FirebaseProvider {
       type: mimeString
     });
   }
+
   generateFilename() {
     var length = 8;
     var text = "";
@@ -84,6 +89,22 @@ export class FirebaseProvider {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     return text + ".jpg";
+  }
+
+  updateSupName(companyname, supName) {
+    firebase.database().ref('supplier/' + companyname).update({ 'name': supName });
+  }
+
+  updateSupSurName(companyname, supSurname) {
+    firebase.database().ref('supplier/' + companyname).update({ 'surname': supSurname });
+  }
+
+  updateSupPhoneNumber(companyname, phonenumber) {
+    firebase.database().ref('supplier/' + companyname).update({ 'phonenumber': phonenumber });
+  }
+
+  updateSupPicture(companyname, imageURL) {
+    firebase.database().ref('supplier/' + companyname).update({ 'img': imageURL });
   }
 
 }

@@ -7,6 +7,7 @@ import { LoadingProvider } from '../loading/loading';
 import { ToastProvider } from '../toast/toast';
 import { NavController } from 'ionic-angular';
 import { FirebaseProvider } from '../firebase/firebase';
+import { WelcomePage } from '../../pages/welcome/welcome';
 
 /*
   Generated class for the AuthProvider provider.
@@ -41,13 +42,12 @@ export class AuthProvider {
 
         this.firebaseProvider.uploadPhoto(user.uid, userData.profileImage).then((url) => {
           let profileURL = url;
-          console.log(profileURL);
 
           let dateCreated = new Date();
           firebase.database().ref('accounts/' + user.uid).set({
             dateCreated,
             username: userData.username,
-            name: userData.fullname,
+            surname: userData.surname,
             userId: user.uid,
             email: user.email,
             state: "Online",
@@ -104,6 +104,7 @@ export class AuthProvider {
       this.loading.show();
       firebase.auth().sendPasswordResetEmail(email).then((success) => {
         this.loading.hide();
+        this.navCtrl.setRoot('LoginPage');
         this.toast.show(email);
       }).catch((error) => {
         this.loading.hide();
@@ -119,7 +120,7 @@ export class AuthProvider {
       // Clear navigation stacks
       this.loading.hide();
       localStorage.setItem("currentUser", "");
-      this.navCtrl.setRoot('WelcomePage');
+      this.navCtrl.setRoot(WelcomePage);
     });
   }
 

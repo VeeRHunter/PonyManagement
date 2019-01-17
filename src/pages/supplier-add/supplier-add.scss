@@ -35,8 +35,31 @@ page-supplier-add {
             }
         }
     }
-    #add_supplier{
+    #add_supplier {
         display: none;
+    }
+    .profile-image {
+        margin-bottom: 25px;
+        span {
+            margin: auto;
+            margin-right: 10px;
+        }
+        ion-icon {
+            margin: auto;
+            font-size: 5rem;
+            margin-left: unset;
+        }
+        img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+    }
+    .photo-error {
+        span {
+            margin: auto;
+            color: red;
+        }
     }
     .footer-component {
         height: 70px;

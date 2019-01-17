@@ -30,8 +30,13 @@ export class RegisterPage {
     Validators.required
   ]);
 
+  public phoneControl = new FormControl('', [
+    Validators.required,
+    Validators.pattern('[0-9]{1,20}$')
+  ]);
 
-  public userData = { "username": "", "email": "", "phonenumber": "", "profileImage": "", "password": "", "confirmpassword": "" };
+
+  public userData = { "username": "", "surname": "", "email": "", "phonenumber": "", "profileImage": "", "password": "", "confirmpassword": "" };
 
   public clickSignUp = false;
 
@@ -56,7 +61,9 @@ export class RegisterPage {
   signUpUser(userProfile) {
     this.clickSignUp = true;
     if (userProfile.valid && this.emailFormControl.valid && this.rePasswordControl.valid
-      && this.userData.password == this.userData.confirmpassword) {
+      && this.userData.password == this.userData.confirmpassword &&
+      Number(this.userData.phonenumber) != NaN
+    ) {
       // && this.userData.profileImage != "") {
       this.authProvider.signUpUser(this.userData);
     }

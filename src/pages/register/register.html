@@ -83,6 +83,29 @@
       <ion-row class="user-input-row">
         <ion-col col-2>
           <ion-row class="full-height">
+            <ion-icon class="input-icon" name="md-person">
+            </ion-icon>
+          </ion-row>
+        </ion-col>
+
+        <ion-col col-10>
+          <ion-row class="full-height">
+            <mat-form-field class="example-full-width">
+              <input matInput type="text" placeholder="Surname" [(ngModel)]="userData.surname" required name="surname">
+
+              <mat-error>
+                Surname is required.
+              </mat-error>
+
+            </mat-form-field>
+          </ion-row>
+        </ion-col>
+
+      </ion-row>
+
+      <ion-row class="user-input-row">
+        <ion-col col-2>
+          <ion-row class="full-height">
             <ion-icon class="input-icon" name="md-mail">
             </ion-icon>
           </ion-row>
@@ -118,10 +141,15 @@
         <ion-col col-10>
           <ion-row class="full-height">
             <mat-form-field class="example-full-width">
-              <input matInput type="text" placeholder="Phone Number" [(ngModel)]="userData.phonenumber" required name="phonenumber">
+              <input matInput type="text" placeholder="Phone Number" [formControl]="phoneControl" [(ngModel)]="userData.phonenumber"
+                required name="phonenumber">
 
-              <mat-error>
+              <mat-error *ngIf="phoneControl.hasError('required')">
                 Phone Number is required.
+              </mat-error>
+
+              <mat-error *ngIf="phoneControl.hasError('pattern') && !phoneControl.hasError('required')">
+                Please insert a valid Phone Number.
               </mat-error>
 
             </mat-form-field>
