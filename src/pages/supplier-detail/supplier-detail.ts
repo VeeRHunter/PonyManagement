@@ -121,11 +121,11 @@ export class SupplierDetailPage {
       let base64Image = 'data:image/jpeg;base64,' + imageData;
       let profileModal = this.modalCtrl.create('PhotoCropPage', { photo: base64Image });
       profileModal.onDidDismiss(data => {
-        console.log(data);
+        console.log("data");
         if (data != null && typeof (data) != "undefined") {
-          this.supplierData.img = data;
-          this.loading.hide();
-          this.updatePhoto();
+          // this.supplierData.img = data;
+          console.log("this.supplierData.img");
+          this.updatePhoto(data);
         }
         this.loading.hide();
       });
@@ -161,9 +161,8 @@ export class SupplierDetailPage {
       profileModal.onDidDismiss(data => {
         console.log(data);
         if (data != null && typeof (data) != "undefined") {
-          this.supplierData.img = data;
-          this.loading.hide();
-          this.updatePhoto();
+          // this.loading.hide();
+          this.updatePhoto(data);
         }
         this.loading.hide();
       });
@@ -175,10 +174,13 @@ export class SupplierDetailPage {
     });
   }
 
-  updatePhoto() {
-    this.firebaseProvider.uploadPhoto(this.supplierData.userId, this.supplierData.img).then((url) => {
+  updatePhoto(image) {
+    this.firebaseProvider.uploadPhoto(this.supplierData.userId, image).then((url) => {
       let profileURL = url;
-      this.firebaseProvider.updateSupPicture(this.supplierData.userId, profileURL);
+      this.supplierData.img = profileURL;
+      console.log(profileURL);
+      this.firebaseProvider.updateSupPicture(this.supplierData.companyname, profileURL);
+      console.log(this.supplierData.img);
       this.loading.hide();
     });
   }

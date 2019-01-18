@@ -162,9 +162,9 @@ export class MyProfilePage {
       profileModal.onDidDismiss(data => {
         console.log(data);
         if (data != null && typeof (data) != "undefined") {
-          this.userData.image = data;
-          this.loading.hide();
-          this.updatePhoto();
+          // this.userData.image = data;
+          // this.loading.hide();
+          this.updatePhoto(data);
         }
         this.loading.hide();
       });
@@ -200,8 +200,8 @@ export class MyProfilePage {
       profileModal.onDidDismiss(data => {
         console.log(data);
         if (data != null && typeof (data) != "undefined") {
-          this.userData.image = data;
-          this.updatePhoto();
+          // this.userData.image = data;
+          this.updatePhoto(data);
         } else {
         }
         this.loading.hide();
@@ -214,12 +214,12 @@ export class MyProfilePage {
     });
   }
 
-  updatePhoto() {
-    this.firebaseProvider.uploadPhoto(this.userData.userAccountUID, this.userData.image).then((url) => {
+  updatePhoto(image) {
+    this.firebaseProvider.uploadPhoto(this.userData.userAccountUID, image).then((url) => {
       let profileURL = url;
+      this.userData.image = profileURL;
       this.firebaseProvider.updateProfilePicture(profileURL);
       this.loading.hide();
-
     });
   }
 

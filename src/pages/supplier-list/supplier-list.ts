@@ -59,6 +59,7 @@ export class SupplierListPage {
       }
 
       for (let list of this.alphaBeta) {
+        list.supList = new Array();
         for (let listArray of this.supplierList) {
           let firstLetter = listArray.companyname.charAt(0).toLowerCase();
           if (list.order.toLowerCase() == firstLetter) {
