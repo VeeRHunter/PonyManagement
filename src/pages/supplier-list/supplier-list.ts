@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
+import { LoadingProvider } from '../../providers/loading/loading';
 
 /**
  * Generated class for the SupplierListPage page.
@@ -31,6 +32,7 @@ export class SupplierListPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public dataProvider: DataProvider,
+    public loading: LoadingProvider,
   ) {
   }
 
@@ -51,6 +53,7 @@ export class SupplierListPage {
   }
 
   getSupplierList() {
+    this.loading.show();
     this.dataProvider.getSupplierList().snapshotChanges().subscribe((supllierData) => {
       this.supplierList = new Array();
       this.eachUser = supllierData.payload.val();
@@ -68,13 +71,14 @@ export class SupplierListPage {
         }
         // if (list.order.toLowerCase() == )
       }
+      this.loading.hide();
       console.log(this.alphaBeta);
     });
   }
 
-  gotoSupplierDetail(alphaIndex, supIndex) {
-    console.log(this.alphaBeta[alphaIndex].supList[supIndex]);
-    localStorage.setItem('companyName', this.alphaBeta[alphaIndex].supList[supIndex].companyname)
+  gotoSupplierDetail(supIndex) {
+    console.log(this.supplierList[supIndex]);
+    localStorage.setItem('companyName', this.supplierList[supIndex].companyname)
     this.navCtrl.push('SupplierDetailPage');
   }
 

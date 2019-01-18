@@ -20,6 +20,9 @@ export class ProductAddedPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductAddedPage');
+    setTimeout(() => {
+      this.navCtrl.setRoot('HomePage');
+    }, 3000);
   }
 
 }

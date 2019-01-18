@@ -6,13 +6,150 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>product-add</ion-title>
-  </ion-navbar>
+  <ion-row class="header-component">
+    <ion-col col-3></ion-col>
+
+    <ion-col col-6>
+      <ion-row class="full-height">
+        <span class="home-title">
+          Add Product
+        </span>
+      </ion-row>
+    </ion-col>
+
+    <ion-col col-3>
+      <ion-row class="full-height">
+        <ion-icon name="ios-funnel"></ion-icon>
+      </ion-row>
+    </ion-col>
+
+  </ion-row>
+
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-row class="first-row">
 
+    <form #userProfile="ngForm" id="userProfile" (ngSubmit)="addProduct(userProfile)" novalidate>
+
+      <ion-row class="user-input-row signin-first">
+
+        <mat-form-field class="example-full-width">
+          <input matInput type="text" placeholder="Product Name" [(ngModel)]="productData.productname" required name="productname">
+
+          <mat-error>
+            Product Name is required.
+          </mat-error>
+        </mat-form-field>
+
+      </ion-row>
+
+      <ion-row class="user-input-row">
+
+        <mat-form-field class="example-full-width">
+          <input matInput type="text" placeholder="Type: Red / Wines / Soft" [(ngModel)]="productData.type" required
+            name="type">
+          <mat-error>
+            Type is required.
+          </mat-error>
+        </mat-form-field>
+
+      </ion-row>
+
+      <ion-row class="user-input-row">
+
+        <mat-form-field class="example-full-width">
+          <mat-select placeholder="Year" [(ngModel)]="productData.year" name="year">
+            <mat-option *ngFor="let year of yearList" [value]="year">
+              {{year}}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            Surname is required.
+          </mat-error>
+        </mat-form-field>
+
+      </ion-row>
+
+      <ion-row class="user-input-row">
+
+        <mat-form-field class="example-full-width">
+          <input matInput type="number" placeholder="Quantity : In ML" [(ngModel)]="productData.quantity" required name="quantity">
+
+          <mat-error>
+            Quantity is required.
+          </mat-error>
+        </mat-form-field>
+
+      </ion-row>
+
+      <ion-row class="user-input-row">
+
+        <mat-form-field class="example-full-width">
+          <input matInput type="number" placeholder="Price" [(ngModel)]="productData.price" required name="price">
+
+          <mat-error>
+            Price is required.
+          </mat-error>
+        </mat-form-field>
+
+      </ion-row>
+
+      <ion-row class="profile-image">
+        <ion-col col-6>
+          <ion-row class="full-height">
+            <span>
+              Add Picture
+            </span>
+          </ion-row>
+        </ion-col>
+        <ion-col col-6>
+          <ion-row class="full-height">
+            <ion-row>
+              <ion-icon name="md-contact" (click)="uploadPicture()" *ngIf="productData.image==''"></ion-icon>
+              <img src="{{productData.image}}" (click)="uploadPicture()" *ngIf="productData.image!=''">
+            </ion-row>
+          </ion-row>
+        </ion-col>
+        <ion-row class="photo-error" *ngIf="clickSignUp && productData.image==''">
+          <span>
+            Supplier picture is required.
+          </span>
+        </ion-row>
+      </ion-row>
+
+      <button mat-rised-button id="add_supplier">Add Supplier</button>
+
+    </form>
+
+  </ion-row>
 </ion-content>
+<ion-footer>
+  <ion-row class="footer-component">
+    <ion-col col-3>
+      <ion-row class="full-height">
+        <ion-row class="footer-icon">
+          <ion-icon name="ios-home" (click)="gotoHome()"></ion-icon>
+        </ion-row>
+        <ion-row class="footer-span">
+          <span (click)="gotoHome()">HOME</span>
+        </ion-row>
+      </ion-row>
+    </ion-col>
+    <ion-col col-6></ion-col>
+    <ion-col col-3>
+      <ion-row class="full-height">
+        <ion-row class="footer-icon">
+          <ion-icon name="md-person-add" (click)="clickAdd()"></ion-icon>
+        </ion-row>
+        <ion-row class="footer-span">
+          <span (click)="clickAdd()">
+            ADD
+          </span>
+        </ion-row>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-footer>

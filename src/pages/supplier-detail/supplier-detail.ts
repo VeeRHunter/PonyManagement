@@ -66,7 +66,7 @@ export class SupplierDetailPage {
         this.eachUser = supData.payload.val();
         this.supplierData = this.eachUser;
         this.enableShow = true;
-        console.log(this.eachUser);
+        console.log(this.supplierData);
         this.loading.hide();
       }, (error) => {
         this.loading.hide();
@@ -175,7 +175,7 @@ export class SupplierDetailPage {
   }
 
   updatePhoto(image) {
-    this.firebaseProvider.uploadPhoto(this.supplierData.userId, image).then((url) => {
+    this.firebaseProvider.uploadPhoto(this.supplierData.userId, this.supplierData.companyname, image).then((url) => {
       let profileURL = url;
       this.supplierData.img = profileURL;
       console.log(profileURL);
@@ -190,7 +190,8 @@ export class SupplierDetailPage {
   }
 
   changeName() {
-    this.firebaseProvider.updateSupName(this.supplierData.companyname, this.supplierData.username);
+    console.log(this.supplierData.username);
+    this.firebaseProvider.updateSupName(this.supplierData.companyname, this.supplierData.name);
     this.nameState = true;
   }
 
@@ -217,11 +218,11 @@ export class SupplierDetailPage {
   }
 
   addProduct() {
-
+    this.navCtrl.push('ProductAddPage');
   }
 
   seeProduct() {
-
+    this.navCtrl.push('ProductListPage');
   }
 
 }

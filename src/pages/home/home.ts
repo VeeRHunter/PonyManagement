@@ -57,4 +57,8 @@ export class HomePage {
     this.navCtrl.push('MyProfilePage');
   }
 
+  gotoProductList() {
+    this.navCtrl.push('ProductListPage');
+  }
+
 }

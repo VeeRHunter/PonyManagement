@@ -40,9 +40,9 @@
       <ion-col col-9>
         <ion-row class="full-height border-row">
           <span class="profile-name" *ngIf="nameState">
-            {{supplierData.username}}
+            {{supplierData.name}}
           </span>
-          <input type="text" placeholder="Name" class="profile-input" [(ngModel)]="supplierData.username" *ngIf="!nameState">
+          <input type="text" placeholder="Name" class="profile-input" [(ngModel)]="supplierData.name" *ngIf="!nameState">
         </ion-row>
       </ion-col>
       <ion-col col-2>

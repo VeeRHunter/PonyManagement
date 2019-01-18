@@ -44,7 +44,7 @@ export class FirebaseProvider {
     firebase.database().ref('accounts/' + firebase.auth().currentUser.uid).update({ 'img': updatedProfilePicture });
   }
 
-  uploadPhoto(currentUserID, imageData): Promise<any> {
+  uploadPhoto(currentUserID, phptoType, imageData): Promise<any> {
     return new Promise(resolve => {
       // Get picture from camera or gallery.
       // Process the returned imageURI.
@@ -53,7 +53,7 @@ export class FirebaseProvider {
         'contentType': imgBlob.type
       };
       // Generate filename and upload to Firebase Storage.
-      firebase.storage().ref().child('images/' + currentUserID + '/' + this.generateFilename()).put(imgBlob, metadata).then((snapshot) => {
+      firebase.storage().ref().child('images/' + currentUserID + '/' + phptoType + '/' + 'profile.jpg').put(imgBlob, metadata).then((snapshot) => {
         console.log(snapshot);
         firebase.storage().ref().child(snapshot.metadata.fullPath).getDownloadURL().then((result) => {
           resolve(result);
@@ -105,6 +105,26 @@ export class FirebaseProvider {
 
   updateSupPicture(companyname, imageURL) {
     firebase.database().ref('supplier/' + companyname).update({ 'img': imageURL });
+  }
+
+  updateProType(product, proType) {
+    firebase.database().ref('product/' + product).update({ 'type': proType });
+  }
+
+  updateProYear(product, proYear) {
+    firebase.database().ref('product/' + product).update({ 'year': proYear });
+  }
+
+  updateProQuantity(product, proQuantity) {
+    firebase.database().ref('product/' + product).update({ 'quantity': proQuantity });
+  }
+
+  updateProPrice(product, proPrice) {
+    firebase.database().ref('product/' + product).update({ 'price': proPrice });
+  }
+
+  updateProImage(product, proImage) {
+    firebase.database().ref('product/' + product).update({ 'img': proImage });
   }
 
 }

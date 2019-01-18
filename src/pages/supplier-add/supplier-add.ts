@@ -56,6 +56,7 @@ export class SupplierAddPage {
   }
 
   getSupplierList() {
+    this.loading.show();
     this.dataProvider.getSupplierList().snapshotChanges().subscribe((supllierList) => {
       this.eachUser = supllierList.payload.val();
       console.log(this.eachUser);
@@ -65,6 +66,7 @@ export class SupplierAddPage {
         this.supList.push(this.eachUser[key]);
       }
       console.log(this.supList);
+      this.loading.hide();
     });
   }
 

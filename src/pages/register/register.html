@@ -34,30 +34,7 @@
 
     <form #userProfile="ngForm" id="userProfile" (ngSubmit)="signUpUser(userProfile)" novalidate>
 
-      <ion-row class="profile-image signin-first">
-        <ion-col col-6>
-          <ion-row class="full-height">
-            <span>
-              Your Photo
-            </span>
-          </ion-row>
-        </ion-col>
-        <ion-col col-6>
-          <ion-row class="full-height">
-            <ion-row>
-              <ion-icon name="md-contact" (click)="uploadPicture()" *ngIf="userData.profileImage==''"></ion-icon>
-              <img src="{{userData.profileImage}}" (click)="uploadPicture()" *ngIf="userData.profileImage!=''">
-            </ion-row>
-          </ion-row>
-        </ion-col>
-        <ion-row class="photo-error" *ngIf="clickSignUp && userData.profileImage==''">
-          <span>
-            Profile photo is required.
-          </span>
-        </ion-row>
-      </ion-row>
-
-      <ion-row class="user-input-row">
+      <ion-row class="user-input-row signin-first">
         <ion-col col-2>
           <ion-row class="full-height">
             <ion-icon class="input-icon" name="md-person">
@@ -204,6 +181,29 @@
           </ion-row>
         </ion-col>
 
+      </ion-row>
+
+      <ion-row class="profile-image">
+        <ion-col col-6>
+          <ion-row class="full-height" (click)="uploadPicture()">
+            <span>
+              Your Photo
+            </span>
+          </ion-row>
+        </ion-col>
+        <ion-col col-6>
+          <ion-row class="full-height">
+            <ion-row>
+              <ion-icon name="md-contact" (click)="uploadPicture()" *ngIf="userData.profileImage==''"></ion-icon>
+              <img src="{{userData.profileImage}}" (click)="uploadPicture()" *ngIf="userData.profileImage!=''">
+            </ion-row>
+          </ion-row>
+        </ion-col>
+        <ion-row class="photo-error" *ngIf="clickSignUp && userData.profileImage==''">
+          <span>
+            Profile photo is required.
+          </span>
+        </ion-row>
       </ion-row>
 
       <ion-row class="signup-row ">

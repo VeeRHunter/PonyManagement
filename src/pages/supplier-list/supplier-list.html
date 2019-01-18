@@ -12,7 +12,7 @@
     <ion-col col-6>
       <ion-row class="full-height">
         <span class="home-title">
-          Add Supplier
+          Supplier List
         </span>
       </ion-row>
     </ion-col>
@@ -29,21 +29,23 @@
 
 
 <ion-content padding>
-  <mat-expansion-panel class="expantion-list" *ngFor="let list of alphaBeta; let alphaIndex = index;">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{list.order}}
-      </mat-panel-title>
-    </mat-expansion-panel-header>
+  <ion-row class="first-row">
 
-    <ion-row class="company-name" *ngFor="let comList of list.supList; let i = index">
-      <!-- <span>
-          {{comList.companyname}}
-        </span> -->
-      <button mat-raised-button (click)="gotoSupplierDetail(alphaIndex, i)">
+    <!-- <ion-row class="search-row" -->
+
+    <ion-row class="company-name" *ngFor="let comList of supplierList; let i = index">
+      <button mat-raised-button (click)="gotoSupplierDetail(i)">
         {{comList.companyname}}
       </button>
     </ion-row>
-  </mat-expansion-panel>
+
+  </ion-row>
+  <!-- <mat-expansion-panel class="expantion-list" *ngFor="let list of supplierList; let i = index;"> -->
+  <!-- <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{list.order}}
+      </mat-panel-title>
+    </mat-expansion-panel-header> -->
+  <!-- </mat-expansion-panel> -->
 
 </ion-content>

@@ -215,7 +215,7 @@ export class MyProfilePage {
   }
 
   updatePhoto(image) {
-    this.firebaseProvider.uploadPhoto(this.userData.userAccountUID, image).then((url) => {
+    this.firebaseProvider.uploadPhoto(this.userData.userAccountUID, 'account', image).then((url) => {
       let profileURL = url;
       this.userData.image = profileURL;
       this.firebaseProvider.updateProfilePicture(profileURL);

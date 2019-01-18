@@ -1,3 +1,38 @@
 page-product-list {
-
+    .header-component {
+        .home-title {
+            margin: auto;
+            font-size: 2.3rem;
+        }
+        ion-icon {
+            margin: auto;
+            font-size: 3rem;
+            margin-left: unset;
+        }
+    }
+    .expantion-list {
+        margin: 5px 0px;
+        width: 100%;
+        box-shadow: 1px 1px 1px 1px black !important;
+        span {
+            margin: auto;
+            font-size: 1.7rem;
+        }
+    }
+    .company-name {
+        margin: 5px 0px;
+        button {
+            width: 100%;
+            height: 39px;
+            text-align: left;
+        }
+    }
+    .example-headers-align .mat-expansion-panel-header-title,
+    .example-headers-align .mat-expansion-panel-header-description {
+        flex-basis: 0;
+    }
+    .example-headers-align .mat-expansion-panel-header-description {
+        justify-content: space-between;
+        align-items: center;
+    }
 }

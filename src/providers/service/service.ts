@@ -35,7 +35,7 @@ export class ServiceProvider {
 
     let user = firebase.auth().currentUser;
 
-    this.firebaseProvider.uploadPhoto(user.uid, supllierData.image).then((url) => {
+    this.firebaseProvider.uploadPhoto(user.uid, supllierData.companyname, supllierData.image).then((url) => {
       let profileURL = url;
 
       let dateCreated = new Date();
@@ -46,6 +46,49 @@ export class ServiceProvider {
         surname: supllierData.surname,
         userId: user.uid,
         phonenumber: supllierData.phonenumber,
+        img: profileURL
+      });
+      this.loading.hide();
+      this.navCtrl.push('SupplierAddedPage');
+
+    });
+  }
+
+  productAdd(productData) {
+
+    this.loading.show();
+
+    let user = firebase.auth().currentUser;
+
+    // let dateCreated = new Date();
+    // firebase.database().ref('product/' + productData.productname + dateCreated.getTime()).set({
+    //   dateCreated,
+    //   companyname: productData.companyname,
+    //   productname: productData.productname,
+    //   type: productData.type,
+    //   year: productData.year,
+    //   userId: user.uid,
+    //   quantity: productData.quantity,
+    //   price: productData.price,
+    //   img: "profileURL"
+    // });
+    // this.loading.hide();
+    // this.navCtrl.push('ProductAddedPage');
+
+    let dateCreated = new Date();
+
+    this.firebaseProvider.uploadPhoto(user.uid, productData.productname + dateCreated.getTime(), productData.image).then((url) => {
+      let profileURL = url;
+
+      firebase.database().ref('product/' + productData.productname + dateCreated.getTime()).set({
+        dateCreated,
+        product: productData.productname + dateCreated.getTime(),
+        productname: productData.productname,
+        type: productData.type,
+        year: productData.year,
+        userId: user.uid,
+        quantity: productData.quantity,
+        price: productData.price,
         img: profileURL
       });
       this.loading.hide();

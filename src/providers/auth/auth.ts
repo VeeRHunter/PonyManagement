@@ -40,7 +40,7 @@ export class AuthProvider {
 
         let user = firebase.auth().currentUser;
 
-        this.firebaseProvider.uploadPhoto(user.uid, userData.profileImage).then((url) => {
+        this.firebaseProvider.uploadPhoto(user.uid, 'account', userData.profileImage).then((url) => {
           let profileURL = url;
 
           let dateCreated = new Date();
