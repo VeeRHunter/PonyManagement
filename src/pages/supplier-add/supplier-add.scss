@@ -1,17 +1,10 @@
 page-supplier-add {
-    .header-component {
-        .home-title {
-            margin: auto;
-            font-size: 2.3rem;
-        }
-        ion-icon {
-            margin: auto;
-            font-size: 3rem;
-            margin-left: unset;
-        }
+    .first-row{
+        height: 100%;
     }
     #userProfile {
         width: 70%;
+        height: 380px;
         margin: auto;
     }
     .signin-first {
@@ -46,7 +39,7 @@ page-supplier-add {
         }
         ion-icon {
             margin: auto;
-            font-size: 5rem;
+            font-size: 4.5rem;
             margin-left: unset;
         }
         img {

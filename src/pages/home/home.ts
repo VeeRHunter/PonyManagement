@@ -34,7 +34,6 @@ export class HomePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
-    this.loading.show();
     this.dataProvider.getCurrentUser().snapshotChanges().subscribe((account) => {
       this.loading.hide();
       this.eachUser = account.payload.val();

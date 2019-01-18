@@ -91,6 +91,8 @@ export class FirebaseProvider {
     return text + ".jpg";
   }
 
+  /////// Supplier part
+
   updateSupName(companyname, supName) {
     firebase.database().ref('supplier/' + companyname).update({ 'name': supName });
   }
@@ -106,6 +108,17 @@ export class FirebaseProvider {
   updateSupPicture(companyname, imageURL) {
     firebase.database().ref('supplier/' + companyname).update({ 'img': imageURL });
   }
+
+
+
+  deleteSupItem(companyName) {
+    firebase.database().ref('supplier/' + companyName).remove();
+    // firebase.storage().ref('supplier/' + companyName + '/profile.jpg').delete();
+  }
+
+
+
+  ////////////// Product Part
 
   updateProType(product, proType) {
     firebase.database().ref('product/' + product).update({ 'type': proType });
@@ -125,6 +138,12 @@ export class FirebaseProvider {
 
   updateProImage(product, proImage) {
     firebase.database().ref('product/' + product).update({ 'img': proImage });
+  }
+
+  deleteProItem(product) {
+    console.log('product/' + product + '/profile.jpg');
+    firebase.database().ref('product/' + product).remove();
+    // firebase.storage().ref('product/' + product + 'profile.jpg').delete();
   }
 
 }

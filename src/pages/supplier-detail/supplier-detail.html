@@ -14,7 +14,7 @@
 
     <ion-col col-2>
       <ion-row class="full-height">
-        <ion-icon name="md-log-out" (click)="logout()"></ion-icon>
+        <ion-icon name="md-trash" (click)="delete()"></ion-icon>
       </ion-row>
     </ion-col>
 
@@ -35,7 +35,11 @@
     </ion-row>
 
     <ion-row class="each-profile first-profile">
-      <ion-col col-1>
+      <ion-col col-2>
+        <ion-row class="full-height">
+          <ion-icon name="md-create" class="edit-icon" (click)="editName()" *ngIf="nameState"></ion-icon>
+          <ion-icon name="md-checkmark-circle" class="change-icon" (click)="changeName()" *ngIf="!nameState"></ion-icon>
+        </ion-row>
       </ion-col>
       <ion-col col-9>
         <ion-row class="full-height border-row">
@@ -45,16 +49,16 @@
           <input type="text" placeholder="Name" class="profile-input" [(ngModel)]="supplierData.name" *ngIf="!nameState">
         </ion-row>
       </ion-col>
-      <ion-col col-2>
-        <ion-row class="full-height">
-          <ion-icon name="md-create" class="edit-icon" (click)="editName()" *ngIf="nameState"></ion-icon>
-          <ion-icon name="md-checkmark-circle" class="change-icon" (click)="changeName()" *ngIf="!nameState"></ion-icon>
-        </ion-row>
+      <ion-col col-1>
       </ion-col>
     </ion-row>
 
     <ion-row class="each-profile">
-      <ion-col col-1>
+      <ion-col col-2>
+        <ion-row class="full-height">
+          <ion-icon name="md-create" class="edit-icon" (click)="editSurname()" *ngIf="surnameState"></ion-icon>
+          <ion-icon name="md-checkmark-circle" class="change-icon" (click)="changeSurname()" *ngIf="!surnameState"></ion-icon>
+        </ion-row>
       </ion-col>
       <ion-col col-9>
         <ion-row class="full-height border-row">
@@ -64,16 +68,16 @@
           <input type="text" placeholder="Surname" class="profile-input" [(ngModel)]="supplierData.surname" *ngIf="!surnameState">
         </ion-row>
       </ion-col>
-      <ion-col col-2>
-        <ion-row class="full-height">
-          <ion-icon name="md-create" class="edit-icon" (click)="editSurname()" *ngIf="surnameState"></ion-icon>
-          <ion-icon name="md-checkmark-circle" class="change-icon" (click)="changeSurname()" *ngIf="!surnameState"></ion-icon>
-        </ion-row>
+      <ion-col col-1>
       </ion-col>
     </ion-row>
 
     <ion-row class="each-profile">
-      <ion-col col-1>
+      <ion-col col-2>
+        <ion-row class="full-height">
+          <ion-icon name="md-create" class="edit-icon" (click)="editPhone()" *ngIf="phoneState"></ion-icon>
+          <ion-icon name="md-checkmark-circle" class="change-icon" (click)="changePhone()" *ngIf="!phoneState"></ion-icon>
+        </ion-row>
       </ion-col>
       <ion-col col-9>
         <ion-row class="full-height border-row">
@@ -84,11 +88,7 @@
             *ngIf="!phoneState">
         </ion-row>
       </ion-col>
-      <ion-col col-2>
-        <ion-row class="full-height">
-          <ion-icon name="md-create" class="edit-icon" (click)="editPhone()" *ngIf="phoneState"></ion-icon>
-          <ion-icon name="md-checkmark-circle" class="change-icon" (click)="changePhone()" *ngIf="!phoneState"></ion-icon>
-        </ion-row>
+      <ion-col col-1>
       </ion-col>
     </ion-row>
 

@@ -9,28 +9,70 @@ page-supplier-list {
             font-size: 3rem;
             margin-left: unset;
         }
-    } // .example-headers-align .mat-expansion-panel-header-title,
-    // .example-headers-align .mat-expansion-panel-header-description {
-    //     flex-basis: 0;
+    } // .expantion-list {
+    //     width: 100%;
+    //     margin: 5px 0px;
+    //     box-shadow: 1px 1px 1px 1px black !important;
+    //     span {
+    //         margin: auto;
+    //         font-size: 1.7rem;
+    //     }
     // }
-    // .example-headers-align .mat-expansion-panel-header-description {
-    //     justify-content: space-between;
-    //     align-items: center;
-    // }
-    .expantion-list {
-        margin: 15px 0px;
-        box-shadow: 1px 1px 1px 1px black !important;
-        span {
-            margin: auto;
-            font-size: 1.7rem;
-        }
+    ion-content {
+        // background-color: rgba(0, 0, 0, 0.1) !important;
     }
-    .company-name {
+    .display-none {
+        display: none;
+    }
+    .display-show {
+        display: initial;
+    }
+    .expantion-list {
+        width: 100%;
         margin: 5px 0px;
-        button {
-            width: 100%;
-            height: 39px;
-            text-align: left;
+        .exantion-title {
+            background-color: #9fc5f8;
+            padding: 5px 0px;
+            span {
+                padding-left: 7px;
+                font-weight: bold;
+                text-align: center;
+            }
+        }
+        .company-name {
+            background-color: white;
+            padding: 3px 10px;
+            width: 96%;
+            // border-radius: 5px;
+            margin-left: auto;
+            margin-right: auto;
+            span {
+                padding: 3px 3px;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+                width: 100%;
+                height: 25px;
+            }
+        }
+    } // .company-name {
+    //     margin: 5px 0px;
+    //     button {
+    //         width: 100%;
+    //         height: 39px;
+    //         text-align: left;
+    //     }
+    // }
+    .footer-component {
+        height: 70px;
+        .footer-icon {
+            ion-icon {
+                font-size: 3rem;
+                margin: auto;
+            }
+        }
+        .footer-span {
+            span {
+                margin: auto;
+            }
         }
     }
 }

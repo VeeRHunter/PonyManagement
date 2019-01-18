@@ -45,7 +45,7 @@ export class SupplierListPage {
   setInitialAlphaBeta() {
     this.alphaBeta = new Array();
     for (let list of this.aToz) {
-      let tempBeta = { "order": "", "supList": [] };
+      let tempBeta = { "order": "", "supList": [], "enableShow": false };
       tempBeta.order = list;
       this.alphaBeta.push(tempBeta);
     }
@@ -53,7 +53,6 @@ export class SupplierListPage {
   }
 
   getSupplierList() {
-    this.loading.show();
     this.dataProvider.getSupplierList().snapshotChanges().subscribe((supllierData) => {
       this.supplierList = new Array();
       this.eachUser = supllierData.payload.val();
@@ -69,6 +68,9 @@ export class SupplierListPage {
             list.supList.push(listArray);
           }
         }
+        if (list.supList.length != 0) {
+          list.enableShow = true;
+        }
         // if (list.order.toLowerCase() == )
       }
       this.loading.hide();
@@ -76,10 +78,14 @@ export class SupplierListPage {
     });
   }
 
-  gotoSupplierDetail(supIndex) {
+  gotoSupplierDetail(alphaIndex, supIndex) {
     console.log(this.supplierList[supIndex]);
-    localStorage.setItem('companyName', this.supplierList[supIndex].companyname)
+    localStorage.setItem('companyName', this.alphaBeta[alphaIndex].supList[supIndex].companyname)
     this.navCtrl.push('SupplierDetailPage');
+  }
+
+  gotoHome() {
+    this.navCtrl.push('HomePage');
   }
 
 }

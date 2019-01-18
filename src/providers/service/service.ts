@@ -35,14 +35,14 @@ export class ServiceProvider {
 
     let user = firebase.auth().currentUser;
 
-    this.firebaseProvider.uploadPhoto(user.uid, supllierData.companyname, supllierData.image).then((url) => {
+    this.firebaseProvider.uploadPhoto(user.uid, 'Supplier/' + supllierData.companyname, supllierData.image).then((url) => {
       let profileURL = url;
 
       let dateCreated = new Date();
       firebase.database().ref('supplier/' + supllierData.companyname).set({
         dateCreated,
         companyname: supllierData.companyname,
-        username: supllierData.name,
+        name: supllierData.name,
         surname: supllierData.surname,
         userId: user.uid,
         phonenumber: supllierData.phonenumber,
@@ -60,24 +60,24 @@ export class ServiceProvider {
 
     let user = firebase.auth().currentUser;
 
-    // let dateCreated = new Date();
+    let dateCreated = new Date();
+
     // firebase.database().ref('product/' + productData.productname + dateCreated.getTime()).set({
     //   dateCreated,
-    //   companyname: productData.companyname,
+    //   product: productData.productname + dateCreated.getTime(),
     //   productname: productData.productname,
     //   type: productData.type,
     //   year: productData.year,
+    //   companyname: productData.companyname,
     //   userId: user.uid,
     //   quantity: productData.quantity,
     //   price: productData.price,
-    //   img: "profileURL"
+    //   img: 'profileURL'
     // });
     // this.loading.hide();
     // this.navCtrl.push('ProductAddedPage');
 
-    let dateCreated = new Date();
-
-    this.firebaseProvider.uploadPhoto(user.uid, productData.productname + dateCreated.getTime(), productData.image).then((url) => {
+    this.firebaseProvider.uploadPhoto(user.uid, 'Product' + productData.productname + dateCreated.getTime(), productData.image).then((url) => {
       let profileURL = url;
 
       firebase.database().ref('product/' + productData.productname + dateCreated.getTime()).set({
@@ -86,13 +86,14 @@ export class ServiceProvider {
         productname: productData.productname,
         type: productData.type,
         year: productData.year,
+        companyname: productData.companyname,
         userId: user.uid,
         quantity: productData.quantity,
         price: productData.price,
         img: profileURL
       });
       this.loading.hide();
-      this.navCtrl.push('SupplierAddedPage');
+      this.navCtrl.push('ProductAddedPage');
 
     });
   }

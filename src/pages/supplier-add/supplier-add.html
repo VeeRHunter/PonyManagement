@@ -7,9 +7,9 @@
 <ion-header>
 
   <ion-row class="header-component">
-    <ion-col col-3></ion-col>
+    <ion-col col-2></ion-col>
 
-    <ion-col col-6>
+    <ion-col col-8>
       <ion-row class="full-height">
         <span class="home-title">
           Add Supplier
@@ -17,7 +17,7 @@
       </ion-row>
     </ion-col>
 
-    <ion-col col-3>
+    <ion-col col-2>
       <ion-row class="full-height">
         <ion-icon name="md-person-add"></ion-icon>
       </ion-row>
@@ -33,30 +33,7 @@
 
     <form #userProfile="ngForm" id="userProfile" (ngSubmit)="addSupplier(userProfile)" novalidate>
 
-      <ion-row class="profile-image signin-first">
-        <ion-col col-6>
-          <ion-row class="full-height">
-            <span>
-              Add Picture
-            </span>
-          </ion-row>
-        </ion-col>
-        <ion-col col-6>
-          <ion-row class="full-height">
-            <ion-row>
-              <ion-icon name="md-contact" (click)="uploadPicture()" *ngIf="userData.image==''"></ion-icon>
-              <img src="{{userData.image}}" (click)="uploadPicture()" *ngIf="userData.image!=''">
-            </ion-row>
-          </ion-row>
-        </ion-col>
-        <ion-row class="photo-error" *ngIf="clickSignUp && userData.image==''">
-          <span>
-            Supplier picture is required.
-          </span>
-        </ion-row>
-      </ion-row>
-
-      <ion-row class="user-input-row">
+      <ion-row class="user-input-row signin-first">
 
         <mat-form-field class="example-full-width">
           <input matInput type="text" placeholder="Company Name" [(ngModel)]="userData.companyname" required name="companyname">
@@ -107,6 +84,31 @@
 
       </ion-row>
 
+
+      <ion-row class="profile-image ">
+        <ion-col col-6>
+          <ion-row class="full-height">
+            <!-- <ion-icon name="md-image"></ion-icon> -->
+            <span>
+              Add Picture
+            </span>
+          </ion-row>
+        </ion-col>
+        <ion-col col-6>
+          <ion-row class="full-height">
+            <ion-row>
+              <ion-icon name="md-image" (click)="uploadPicture()" *ngIf="userData.image==''"></ion-icon>
+              <img src="{{userData.image}}" (click)="uploadPicture()" *ngIf="userData.image!=''">
+            </ion-row>
+          </ion-row>
+        </ion-col>
+        <ion-row class="photo-error" *ngIf="clickSignUp && userData.image==''">
+          <span>
+            Supplier picture is required.
+          </span>
+        </ion-row>
+      </ion-row>
+
       <!-- <ion-row class="user-input-row">
 
         <ion-row class="add-picture">
@@ -129,7 +131,7 @@
       <button mat-rised-button id="add_supplier">Add Supplier</button>
 
     </form>
-    
+
   </ion-row>
 </ion-content>
 <ion-footer>

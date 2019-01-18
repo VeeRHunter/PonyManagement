@@ -36,16 +36,18 @@ export class ProductListPage {
   }
 
   getProductList() {
-    this.loading.show();
     this.dataProvider.getSupplierList().snapshotChanges().subscribe((supplierList) => {
       this.eachSupplier = supplierList.payload.val();
       this.alphaBeta = new Array();
       this.productList = new Array();
 
+      // console.log(this.eachSupplier);
+
       this.dataProvider.getProductList().snapshotChanges().subscribe((result) => {
         this.eachUser = result.payload.val();
         this.productList = new Array();
         this.alphaBeta = new Array();
+        // console.log(this.eachUser);
 
         for (var listSup in this.eachSupplier) {
           let supTemp = { "companyname": "", "productList": [] };
@@ -61,6 +63,8 @@ export class ProductListPage {
             this.alphaBeta.push(supTemp);
           }
         }
+        console.log(this.productList);
+        console.log(this.alphaBeta);
         this.loading.hide();
       });
     });

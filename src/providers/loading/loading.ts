@@ -19,10 +19,12 @@ export class LoadingProvider {
   }
 
   show() {
-    this.loading = this.loadingCtrl.create({
-      content: "Please Wait..."
-    });
-    this.loading.present();
+    if (!this.loading) {
+      this.loading = this.loadingCtrl.create({
+        content: "Please Wait..."
+      });
+      this.loading.present();
+    }
   }
 
   hide() {

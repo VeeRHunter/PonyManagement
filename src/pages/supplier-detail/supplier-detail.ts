@@ -59,14 +59,17 @@ export class SupplierDetailPage {
   }
 
   getSupplierData() {
-    this.loading.show();
     let companyName = localStorage.getItem('companyName');
     this.dataProvider.getSupplierWithCompanyName(companyName).snapshotChanges().subscribe(
       (supData) => {
-        this.eachUser = supData.payload.val();
-        this.supplierData = this.eachUser;
-        this.enableShow = true;
-        console.log(this.supplierData);
+        if (localStorage.getItem('companyName') != "" && typeof (localStorage.getItem('companyName')) != "undefined") {
+          this.eachUser = supData.payload.val();
+          this.supplierData = this.eachUser;
+          this.enableShow = true;
+          console.log(this.supplierData);
+        } else {
+
+        }
         this.loading.hide();
       }, (error) => {
         this.loading.hide();
@@ -213,8 +216,25 @@ export class SupplierDetailPage {
     this.phoneState = true;
   }
 
-  logout() {
-    this.authProvider.logout();
+  delete() {
+    // this.authProvider.logout();
+    this.enableShow = false;
+    this.loading.show();
+    localStorage.setItem('companyName', '');
+    this.firebaseProvider.deleteSupItem(this.supplierData.companyname);
+    this.dataProvider.getProductList().snapshotChanges().subscribe((results) => {
+      this.eachUser = results.payload.val();
+      console.log(this.eachUser);
+      if (this.eachUser != null) {
+        for (let list of this.eachUser) {
+          if (this.supplierData.companyname == list.companyname) {
+            this.firebaseProvider.deleteProItem(list.product);
+          }
+        }
+      }
+      this.loading.hide();
+      this.navCtrl.setRoot('HomePage');
+    })
   }
 
   addProduct() {

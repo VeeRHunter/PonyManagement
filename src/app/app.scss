@@ -50,9 +50,45 @@ ion-row {
     }
 }
 
-// ion-content {
-//     background-color: #781e41 !important;
-// }
+.header-component {
+    .home-title {
+        margin: auto;
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+    ion-icon {
+        margin: auto;
+        font-size: 3rem;
+        margin-left: unset;
+    }
+}
+
+ion-content {
+    font-family: Georgia !important;
+    mat-form-field {
+        font-family: Georgia !important;
+        font-weight: bold;
+    }
+    input {
+        font-family: Georgia !important;
+        font-weight: bold !important;
+    }
+}
+
+ion-header {
+    font-family: Georgia !important;
+    font-weight: bold !important;
+}
+
+span {
+    font-weight: bold !important;
+}
+
+ion-footer {
+    font-family: Georgia !important;
+    font-weight: bold !important;
+}
+
 .content-ios .first-row {
     padding-top: 20px;
 }
@@ -148,13 +184,14 @@ form {
 }
 
 button {
+    font-family: Georgia !important;
     height: 45px;
 }
 
 .expantion-list {
     .mat-expansion-panel-header {
-        height: 40px !important;
-        background-color: #9fc5f8;
+        height: 30px !important;
+        background-color: white;
         .mat-expansion-panel-header-title {
             text-align: center;
             display: block;
@@ -165,7 +202,6 @@ button {
         display: none;
     }
 }
-
 
 // .each-property-row {
 //     .mat-focus {

@@ -64,8 +64,12 @@ export class DataProvider {
 
   // Get Product list
   getProductList() {
-    this.loading.hide();
-    this.loading.show();
+    if (this.loading.loading) {
+
+    } else {
+      this.loading.hide();
+      this.loading.show();
+    }
     return this.angularfire.object('/product/');
   }
 

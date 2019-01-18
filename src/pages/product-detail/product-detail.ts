@@ -62,14 +62,16 @@ export class ProductDetailPage {
     for (let i = current_year; i > 1900; i--) {
       this.yearList.push(i);
     }
-    this.loading.show();
-    this.dataProvider.getProductWithProduc(localStorage.getItem("product")).snapshotChanges().subscribe((result) => {
-      this.eachUser = result.payload.val();
-      this.productData = this.eachUser;
-      this.enableShow = true;
-      this.loading.hide();
-      console.log(this.productData);
-    });
+    if (localStorage.getItem("product") != "" && typeof (localStorage.getItem("product")) != "undefined") {
+      this.dataProvider.getProductWithProduc(localStorage.getItem("product")).snapshotChanges().subscribe((result) => {
+        console.log(localStorage.getItem("product"));
+        this.eachUser = result.payload.val();
+        this.productData = this.eachUser;
+        this.enableShow = true;
+        this.loading.hide();
+        console.log(this.productData);
+      });
+    }
   }
 
   changeProfilePicture() {
@@ -226,6 +228,13 @@ export class ProductDetailPage {
 
   gotoHome() {
     this.navCtrl.push('HomePage');
+  }
+
+  delete() {
+    this.enableShow = false;
+    // localStorage.setItem('product', "");
+    this.firebaseProvider.deleteProItem(this.productData.product);
+    this.navCtrl.setRoot('HomePage');
   }
 
 }
