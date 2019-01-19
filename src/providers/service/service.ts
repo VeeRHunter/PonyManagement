@@ -62,40 +62,43 @@ export class ServiceProvider {
 
     let dateCreated = new Date();
 
-    // firebase.database().ref('product/' + productData.productname + dateCreated.getTime()).set({
-    //   dateCreated,
-    //   product: productData.productname + dateCreated.getTime(),
-    //   productname: productData.productname,
-    //   type: productData.type,
-    //   year: productData.year,
-    //   companyname: productData.companyname,
-    //   userId: user.uid,
-    //   quantity: productData.quantity,
-    //   price: productData.price,
-    //   img: 'profileURL'
-    // });
-    // this.loading.hide();
-    // this.navCtrl.push('ProductAddedPage');
 
-    this.firebaseProvider.uploadPhoto(user.uid, 'Product' + productData.productname + dateCreated.getTime(), productData.image).then((url) => {
-      let profileURL = url;
-
-      firebase.database().ref('product/' + productData.productname + dateCreated.getTime()).set({
-        dateCreated,
-        product: productData.productname + dateCreated.getTime(),
-        productname: productData.productname,
-        type: productData.type,
-        year: productData.year,
-        companyname: productData.companyname,
-        userId: user.uid,
-        quantity: productData.quantity,
-        price: productData.price,
-        img: profileURL
-      });
-      this.loading.hide();
-      this.navCtrl.push('ProductAddedPage');
-
+    firebase.database().ref('product/' + productData.productname + dateCreated.getTime()).set({
+      dateCreated,
+      product: productData.productname + dateCreated.getTime(),
+      productname: productData.productname,
+      type: productData.type,
+      year: productData.year,
+      companyname: productData.companyname,
+      userId: user.uid,
+      quantity: productData.quantity,
+      price: productData.price,
+      img: 'profileURL'
     });
+    this.loading.hide();
+    this.navCtrl.push('ProductAddedPage');
+
+
+    //   this.firebaseProvider.uploadPhoto(user.uid, 'Product' + productData.productname + dateCreated.getTime(), productData.image).then((url) => {
+    //     let profileURL = url;
+
+    //     firebase.database().ref('product/' + productData.productname + dateCreated.getTime()).set({
+    //       dateCreated,
+    //       product: productData.productname + dateCreated.getTime(),
+    //       productname: productData.productname,
+    //       type: productData.type,
+    //       year: productData.year,
+    //       companyname: productData.companyname,
+    //       userId: user.uid,
+    //       quantity: productData.quantity,
+    //       price: productData.price,
+    //       img: profileURL
+    //     });
+    //     this.loading.hide();
+    //     this.navCtrl.push('ProductAddedPage');
+
+    //   });
+
   }
 
 

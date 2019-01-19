@@ -6,13 +6,63 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>order</ion-title>
-  </ion-navbar>
+  <ion-row class="header-component">
+    <ion-col col-2></ion-col>
+
+    <ion-col col-8>
+      <ion-row class="full-height">
+        <span class="home-title">
+          Order
+        </span>
+      </ion-row>
+    </ion-col>
+
+    <ion-col col-2>
+      <ion-row class="full-height">
+        <ion-icon name="md-cart"></ion-icon>
+      </ion-row>
+    </ion-col>
+
+  </ion-row>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-row class="first-row">
+    <ion-row class="total-price">
+      <ion-col col-6>
+        <ion-row class="full-height">
+          <span class="left-element">
+            {{totalItemNumber}} Items
+          </span>
+        </ion-row>
+      </ion-col>
+      <ion-col col-6>
+        <ion-row class="full-height">
+          <span class="right-element">
+            {{totalPrice}}$
+          </span>
+        </ion-row>
+      </ion-col>
+    </ion-row>
 
+    <ion-row class="expantion-list" [ngClass]="{'display-none':!list.enableShow, 'display-show':list.enableShow}"
+      *ngFor="let list of alphaBeta; let alphaIndex = index;">
+      <ion-row *ngIf="list.enableShow">
+        <ion-row class="exantion-title">
+          <span>
+            {{list.companyname}}
+          </span>
+        </ion-row>
+
+        <ion-row class="company-name" *ngFor="let comList of list.productList; let i = index">
+          <span (click)="gotoSupplierDetail(alphaIndex, i)">
+            {{comList.productname}}
+          </span>
+        </ion-row>
+      </ion-row>
+    </ion-row>
+
+  </ion-row>
 </ion-content>

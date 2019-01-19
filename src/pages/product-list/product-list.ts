@@ -41,16 +41,16 @@ export class ProductListPage {
       this.alphaBeta = new Array();
       this.productList = new Array();
 
-      // console.log(this.eachSupplier);
+      console.log(this.eachSupplier);
 
       this.dataProvider.getProductList().snapshotChanges().subscribe((result) => {
         this.eachUser = result.payload.val();
         this.productList = new Array();
         this.alphaBeta = new Array();
-        // console.log(this.eachUser);
+        console.log(this.eachUser);
 
         for (var listSup in this.eachSupplier) {
-          let supTemp = { "companyname": "", "productList": [] };
+          let supTemp = { "companyname": "", "productList": [], "enableShow": false };
           supTemp.companyname = this.eachSupplier[listSup].companyname;
           for (var listPro in this.eachUser) {
             if (this.eachSupplier[listSup].companyname == this.eachUser[listPro].companyname) {
@@ -60,6 +60,7 @@ export class ProductListPage {
           }
           if (supTemp.productList.length != 0) {
             supTemp.productList.sort(this.dynamicSort("productname"));
+            supTemp.enableShow = true;
             this.alphaBeta.push(supTemp);
           }
         }
@@ -91,6 +92,10 @@ export class ProductListPage {
     localStorage.setItem("product", this.alphaBeta[alphaIndex].productList[proIndex].product);
     console.log(this.alphaBeta[alphaIndex].productList[proIndex].product);
     this.navCtrl.push('ProductDetailPage');
+  }
+
+  gotoHome() {
+    this.navCtrl.push('HomePage');
   }
 
 }

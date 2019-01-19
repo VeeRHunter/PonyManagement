@@ -32,6 +32,8 @@ export class ProductDetailPage {
   public quantityState = true;
   public priceState = true;
 
+  public firstLetter: any;
+
   public yearList: any[];
 
   constructor(
@@ -66,8 +68,13 @@ export class ProductDetailPage {
       this.dataProvider.getProductWithProduc(localStorage.getItem("product")).snapshotChanges().subscribe((result) => {
         console.log(localStorage.getItem("product"));
         this.eachUser = result.payload.val();
-        this.productData = this.eachUser;
-        this.enableShow = true;
+        if (this.eachUser == null) {
+          this.navCtrl.setRoot('HomePage');
+        } else {
+          this.productData = this.eachUser;
+          this.firstLetter = this.productData.productname.charAt(0).toUpperCase();
+          this.enableShow = true;
+        }
         this.loading.hide();
         console.log(this.productData);
       });

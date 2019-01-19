@@ -73,6 +73,7 @@ export class ProductAddPage {
   addProduct(supplierData) {
     this.clickSignUp = true;
     if (supplierData.valid) {
+      console.log(supplierData.valid);
       // if (supplierData.valid && this.productData.image != "") {
       this.serviceProvider.productAdd(this.productData);
     }

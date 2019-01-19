@@ -62,13 +62,12 @@ export class SupplierDetailPage {
     let companyName = localStorage.getItem('companyName');
     this.dataProvider.getSupplierWithCompanyName(companyName).snapshotChanges().subscribe(
       (supData) => {
-        if (localStorage.getItem('companyName') != "" && typeof (localStorage.getItem('companyName')) != "undefined") {
-          this.eachUser = supData.payload.val();
+        this.eachUser = supData.payload.val();
+        if (this.eachUser == null) {
+          this.navCtrl.setRoot('HomePage');
+        } else {
           this.supplierData = this.eachUser;
           this.enableShow = true;
-          console.log(this.supplierData);
-        } else {
-
         }
         this.loading.hide();
       }, (error) => {
