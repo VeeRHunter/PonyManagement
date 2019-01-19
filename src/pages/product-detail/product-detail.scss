@@ -7,7 +7,7 @@ page-product-detail {
         }
     }
     .profile-image {
-        margin-top: 20px;
+        margin-top: 0px;
         .image-row {
             img {
                 width: 100px;
@@ -58,12 +58,13 @@ page-product-detail {
         }
         .trash-icon {
             color: red;
-            font-size: 2.3rem;
+            font-size: 2.8rem;
             margin: auto;
         }
     }
     .first-letter-product-name {
         margin-top: 0px;
+        margin-top: 10px;
         .border-line-circle {
             width: 100px;
             height: 100px;
@@ -71,8 +72,8 @@ page-product-detail {
             border-radius: 50%;
             margin: auto;
             .full-circle {
-                width: 70px;
-                height: 70px;
+                width: 60px;
+                height: 60px;
                 margin: auto;
                 border-radius: 50%;
                 background-color: black;

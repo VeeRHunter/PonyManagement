@@ -78,28 +78,19 @@ export class ServiceProvider {
     this.loading.hide();
     this.navCtrl.push('ProductAddedPage');
 
-
-    //   this.firebaseProvider.uploadPhoto(user.uid, 'Product' + productData.productname + dateCreated.getTime(), productData.image).then((url) => {
-    //     let profileURL = url;
-
-    //     firebase.database().ref('product/' + productData.productname + dateCreated.getTime()).set({
-    //       dateCreated,
-    //       product: productData.productname + dateCreated.getTime(),
-    //       productname: productData.productname,
-    //       type: productData.type,
-    //       year: productData.year,
-    //       companyname: productData.companyname,
-    //       userId: user.uid,
-    //       quantity: productData.quantity,
-    //       price: productData.price,
-    //       img: profileURL
-    //     });
-    //     this.loading.hide();
-    //     this.navCtrl.push('ProductAddedPage');
-
-    //   });
-
   }
+
+  orderProduct(orderList) {
+    this.loading.show();
+    let user = firebase.auth().currentUser;
+    let dateCreated = new Date();
+    firebase.database().ref('order/' + user.uid + '/' + dateCreated.getTime()).set({
+      orderList
+    });
+    this.loading.hide();
+    this.navCtrl.push('HomePage');
+  }
+  
 
 
 }

@@ -17,8 +17,8 @@ import { DataProvider } from '../../providers/data/data';
 })
 export class OrderPage {
 
-  public totalItemNumber: any;
-  public totalPrice: any;
+  public totalItemNumber = "0";
+  public totalPrice = "0";
 
 
   public eachUser: any = {};
@@ -58,8 +58,22 @@ export class OrderPage {
           let supTemp = { "companyname": "", "productList": [], "enableShow": false };
           supTemp.companyname = this.eachSupplier[listSup].companyname;
           for (var listPro in this.eachUser) {
+            let tempProductList = {
+              "product": this.eachUser[listPro].product,
+              "productname": this.eachUser[listPro].productname,
+              "type": this.eachUser[listPro].type,
+              "year": this.eachUser[listPro].year,
+              "companyname": this.eachUser[listPro].companyname,
+              "userId": this.eachUser[listPro].userId,
+              "quantity": this.eachUser[listPro].quantity,
+              "ordered": false,
+              "price": this.eachUser[listPro].price,
+              "itemnumber": "0",
+              "itemprice": "0",
+              "img": this.eachUser[listPro].img
+            };
             if (this.eachSupplier[listSup].companyname == this.eachUser[listPro].companyname) {
-              supTemp.productList.push(this.eachUser[listPro]);
+              supTemp.productList.push(tempProductList);
             }
             this.productList.push(this.eachUser[listPro]);
           }
@@ -91,6 +105,48 @@ export class OrderPage {
         return a[property].localeCompare(b[property]);
       }
     }
+  }
+
+  changeItemNumber(alphaIndex, proIndex) {
+    console.log(this.alphaBeta[alphaIndex].productList[proIndex]);
+    let itemNum = this.alphaBeta[alphaIndex].productList[proIndex].itemnumber;
+    let itemPri = this.alphaBeta[alphaIndex].productList[proIndex].price;
+
+    if (itemNum == "") {
+      this.alphaBeta[alphaIndex].productList[proIndex].itemnumber = "0";
+    } else {
+      this.alphaBeta[alphaIndex].productList[proIndex].itemnumber =
+        parseFloat(this.alphaBeta[alphaIndex].productList[proIndex].itemnumber).toString();
+    }
+
+    this.alphaBeta[alphaIndex].productList[proIndex].itemprice =
+      this.changeToDecimal(itemNum * itemPri);
+    this.calculTotalPrice();
+  }
+
+  calculTotalPrice() {
+    for (let list of this.alphaBeta) {
+      for (let proList of list.productList) {
+        console.log(proList.itemprice);
+        console.log(proList.itemnumber);
+        this.totalPrice = (parseFloat(this.totalPrice) + parseFloat(proList.itemprice)).toString();
+        this.totalItemNumber = (parseFloat(this.totalItemNumber) + parseFloat(proList.itemnumber)).toString();
+      }
+    }
+    this.totalPrice = this.changeToDecimal(this.totalPrice);
+    this.totalItemNumber = parseFloat(this.totalItemNumber).toFixed(0);
+  }
+
+  changeToDecimal(inputData) {
+    return parseFloat(inputData).toFixed(2);
+  }
+
+  gotoPreviousPage() {
+    this.navCtrl.pop();
+  }
+
+  gotoReview() {
+    this.navCtrl.push('OrderReviewPage', { orderData: this.alphaBeta });
   }
 
 }
