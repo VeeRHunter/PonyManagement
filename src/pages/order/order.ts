@@ -118,13 +118,14 @@ export class OrderPage {
       this.alphaBeta[alphaIndex].productList[proIndex].itemnumber =
         parseFloat(this.alphaBeta[alphaIndex].productList[proIndex].itemnumber).toString();
     }
-
     this.alphaBeta[alphaIndex].productList[proIndex].itemprice =
       this.changeToDecimal(itemNum * itemPri);
     this.calculTotalPrice();
   }
 
   calculTotalPrice() {
+    this.totalPrice = "0";
+    this.totalItemNumber = "0";
     for (let list of this.alphaBeta) {
       for (let proList of list.productList) {
         console.log(proList.itemprice);

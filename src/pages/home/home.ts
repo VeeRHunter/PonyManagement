@@ -64,4 +64,8 @@ export class HomePage {
     this.navCtrl.push('OrderPage');
   }
 
+  gotoSearch() {
+    this.navCtrl.push('ProductSearchPage');
+  }
+
 }
