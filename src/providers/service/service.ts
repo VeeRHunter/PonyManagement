@@ -35,23 +35,18 @@ export class ServiceProvider {
 
     let user = firebase.auth().currentUser;
 
-    this.firebaseProvider.uploadPhoto(user.uid, 'Supplier/' + supllierData.companyname, supllierData.image).then((url) => {
-      let profileURL = url;
-
-      let dateCreated = new Date();
-      firebase.database().ref('supplier/' + supllierData.companyname).set({
-        dateCreated,
-        companyname: supllierData.companyname,
-        name: supllierData.name,
-        surname: supllierData.surname,
-        userId: user.uid,
-        phonenumber: supllierData.phonenumber,
-        img: profileURL
-      });
-      this.loading.hide();
-      this.navCtrl.push('SupplierAddedPage');
-
+    let dateCreated = new Date();
+    firebase.database().ref('supplier/' + supllierData.companyname).set({
+      dateCreated,
+      companyname: supllierData.companyname,
+      name: supllierData.name,
+      surname: supllierData.surname,
+      userId: user.uid,
+      phonenumber: supllierData.phonenumber,
+      img: 'profileURL'
     });
+    this.loading.hide();
+    this.navCtrl.push('SupplierAddedPage');
   }
 
   productAdd(productData) {
@@ -90,7 +85,7 @@ export class ServiceProvider {
     this.loading.hide();
     this.navCtrl.push('HomePage');
   }
-  
+
 
 
 }

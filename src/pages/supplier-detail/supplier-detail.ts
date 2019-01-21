@@ -32,6 +32,9 @@ export class SupplierDetailPage {
   public surnameState = true;
   public phoneState = true;
 
+  public firstLetter: any;
+
+
   public phoneControl = new FormControl('', [
     Validators.required,
     Validators.pattern('[0-9]{1,20}$')
@@ -60,6 +63,7 @@ export class SupplierDetailPage {
 
   getSupplierData() {
     let companyName = localStorage.getItem('companyName');
+    this.firstLetter = companyName.charAt(0).toUpperCase();
     this.dataProvider.getSupplierWithCompanyName(companyName).snapshotChanges().subscribe(
       (supData) => {
         this.eachUser = supData.payload.val();
@@ -242,6 +246,14 @@ export class SupplierDetailPage {
 
   seeProduct() {
     this.navCtrl.push('ProductListPage');
+  }
+
+  clickBack() {
+    this.navCtrl.pop();
+  }
+
+  gotoHome() {
+    this.navCtrl.push('HomePage');
   }
 
 }

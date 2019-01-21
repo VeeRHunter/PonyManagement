@@ -75,7 +75,7 @@ export class ProductSearchPage {
     let compareState = true;
     for (let i = 0; i < str2.length; i++) {
       if (i < str1.length - 1) {
-        if (str1.charAt(i) == str2.charAt(i)) {
+        if (str1.charAt(i).toLowerCase() == str2.charAt(i).toLowerCase()) {
         } else {
           compareState = false;
         }
@@ -98,6 +98,10 @@ export class ProductSearchPage {
 
   cancel(){
     this.navCtrl.pop();
+  }
+
+  gotoHome(){
+    this.navCtrl.push('HomePage');
   }
 
 }
