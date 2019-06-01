@@ -62,6 +62,29 @@ page-supplier-detail {
             margin: auto;
         }
     }
+    .first-letter-product-name {
+        margin-top: 0px;
+        margin-top: 10px;
+        .border-line-circle {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            border-radius: 50%;
+            margin: auto;
+            .full-circle {
+                width: 60px;
+                height: 60px;
+                margin: auto;
+                border-radius: 50%;
+                background-color: black;
+                span {
+                    font-size: 1.8rem;
+                    margin: auto;
+                    color: white;
+                }
+            }
+        }
+    }
     .product-item {
         .add-icon {
             margin: auto;

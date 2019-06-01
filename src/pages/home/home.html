@@ -52,8 +52,6 @@
     </ion-row>
 
     <ion-row class="list-row">
-      <ion-col col-3>
-      </ion-col>
       <ion-col col-6>
         <ion-row class="full-height">
           <ion-row class="item-image">
@@ -66,15 +64,28 @@
           </ion-row>
         </ion-row>
       </ion-col>
+
+      <ion-col col-6>
+        <ion-row class="full-height" (click)="gotoSearch()">
+          <ion-row class="item-image">
+            <img src="assets/imgs/Search.png" />
+          </ion-row>
+          <ion-row class="item-title">
+            <span>
+              Search
+            </span>
+          </ion-row>
+        </ion-row>
+      </ion-col>
     </ion-row>
 
     <ion-row class="list-row">
       <ion-col col-6>
         <ion-row class="full-height">
           <ion-row class="item-image">
-            <img src="assets/imgs/order.png" />
+            <img src="assets/imgs/order.png" (click)="gotoOrder()" />
           </ion-row>
-          <ion-row class="item-title">
+          <ion-row class="item-title" (click)="gotoOrder()">
             <span>
               Order
             </span>
@@ -83,13 +94,13 @@
       </ion-col>
 
       <ion-col col-6>
-        <ion-row class="full-height">
+        <ion-row class="full-height" (click)="gotoSearch()">
           <ion-row class="item-image">
-            <img src="assets/imgs/Search.png" />
+            <img src="assets/imgs/order-history.png" />
           </ion-row>
           <ion-row class="item-title">
             <span>
-              Search
+              Order History
             </span>
           </ion-row>
         </ion-row>
