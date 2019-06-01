@@ -4,7 +4,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { WelcomePage } from '../pages/welcome/welcome';
-// import { PhotoCropPage } from '../pages/photo-crop/photo-crop';
 @Component({
   templateUrl: 'app.html'
 })

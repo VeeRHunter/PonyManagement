@@ -32,9 +32,6 @@ export class SupplierDetailPage {
   public surnameState = true;
   public phoneState = true;
 
-  public firstLetter: any;
-
-
   public phoneControl = new FormControl('', [
     Validators.required,
     Validators.pattern('[0-9]{1,20}$')
@@ -63,7 +60,6 @@ export class SupplierDetailPage {
 
   getSupplierData() {
     let companyName = localStorage.getItem('companyName');
-    this.firstLetter = companyName.charAt(0).toUpperCase();
     this.dataProvider.getSupplierWithCompanyName(companyName).snapshotChanges().subscribe(
       (supData) => {
         this.eachUser = supData.payload.val();
@@ -125,17 +121,8 @@ export class SupplierDetailPage {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64 (DATA_URL):
       let base64Image = 'data:image/jpeg;base64,' + imageData;
-      let profileModal = this.modalCtrl.create('PhotoCropPage', { photo: base64Image });
-      profileModal.onDidDismiss(data => {
-        console.log("data");
-        if (data != null && typeof (data) != "undefined") {
-          // this.supplierData.img = data;
-          console.log("this.supplierData.img");
-          this.updatePhoto(data);
-        }
-        this.loading.hide();
-      });
-      profileModal.present();
+      this.updatePhoto(base64Image);
+      this.loading.hide();
 
     }, (err) => {
       console.log("unselect image");
@@ -163,16 +150,8 @@ export class SupplierDetailPage {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64 (DATA_URL):
       let base64Image = 'data:image/jpeg;base64,' + imageData;
-      let profileModal = this.modalCtrl.create('PhotoCropPage', { photo: base64Image });
-      profileModal.onDidDismiss(data => {
-        console.log(data);
-        if (data != null && typeof (data) != "undefined") {
-          // this.loading.hide();
-          this.updatePhoto(data);
-        }
-        this.loading.hide();
-      });
-      profileModal.present();
+      this.updatePhoto(base64Image);
+      this.loading.hide();
     }, (err) => {
       // Handle error
       console.log("unselect image");
@@ -246,14 +225,6 @@ export class SupplierDetailPage {
 
   seeProduct() {
     this.navCtrl.push('ProductListPage');
-  }
-
-  clickBack() {
-    this.navCtrl.pop();
-  }
-
-  gotoHome() {
-    this.navCtrl.push('HomePage');
   }
 
 }

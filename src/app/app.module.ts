@@ -9,9 +9,6 @@ import { WelcomePage } from '../pages/welcome/welcome';
 import { Camera } from '@ionic-native/camera';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-// import { AngularCropperjsModule } from 'angular-cropperjs';
-// import { PhotoCropPage } from '../pages/photo-crop/photo-crop';
 import { SharedModule } from './share.module';
 import { AuthProvider } from '../providers/auth/auth';
 import { LoadingProvider } from '../providers/loading/loading';
@@ -46,13 +43,11 @@ firebase.initializeApp(firebaseConfig);
   declarations: [
     MyApp,
     WelcomePage,
-    // PhotoCropPage,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     BrowserAnimationsModule,
-    // AngularCropperjsModule,
     SharedModule,
     HttpClientModule,
     AngularFireModule.initializeApp(firebaseConfig),
@@ -63,7 +58,6 @@ firebase.initializeApp(firebaseConfig);
   entryComponents: [
     MyApp,
     WelcomePage,
-    // PhotoCropPage,
   ],
   providers: [
     StatusBar,

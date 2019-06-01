@@ -74,7 +74,7 @@ export class SupplierAddPage {
     this.clickSignUp = true;
     if (this.checkCompanyName()) {
       // if (supplierData.valid && this.phoneControl.valid) {
-      if (supplierData.valid && this.phoneControl.valid) {
+      if (supplierData.valid && this.userData.image != "" && this.phoneControl.valid) {
         this.serviceProvider.supplierAdd(this.userData);
       }
     } else {
@@ -98,6 +98,90 @@ export class SupplierAddPage {
 
   gotoHome() {
     this.navCtrl.push('HomePage');
+  }
+
+  uploadPicture() {
+
+    let actionSheet = this.actionsheetCtrl.create({
+      title: 'Option',
+      cssClass: 'action-sheets-basic-page',
+      buttons: [
+        {
+          text: 'Take photo',
+          role: 'destructive',
+          icon: !this.platform.is('ios') ? 'ios-camera-outline' : null,
+          handler: () => {
+            this.takePhoto();
+          }
+        },
+        {
+          text: 'Choose photo from Gallery',
+          icon: !this.platform.is('ios') ? 'ios-images-outline' : null,
+          handler: () => {
+            this.openGallery();
+          }
+        },
+      ]
+    });
+    actionSheet.present();
+
+  }
+
+  takePhoto() {
+
+    setTimeout(() => {
+      this.loading.show();
+    }, 100);
+
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      sourceType: this.camera.PictureSourceType.CAMERA,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      correctOrientation: true,
+    }
+
+    this.camera.getPicture(options).then((imageData) => {
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64 (DATA_URL):
+      let base64Image = 'data:image/jpeg;base64,' + imageData;
+      this.userData.image = base64Image;
+      this.loading.hide();
+
+    }, (err) => {
+      console.log("unselect image");
+      this.loading.hide();
+    });
+
+  }
+
+  openGallery() {
+
+    setTimeout(() => {
+      this.loading.show();
+    }, 100);
+
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      correctOrientation: true,
+    }
+
+    this.camera.getPicture(options).then((imageData) => {
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64 (DATA_URL):
+      let base64Image = 'data:image/jpeg;base64,' + imageData;
+      this.userData.image = base64Image;
+      this.loading.hide();
+    }, (err) => {
+      // Handle error
+      console.log("unselect image");
+      this.loading.hide();
+    });
   }
 
 

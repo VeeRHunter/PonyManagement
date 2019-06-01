@@ -7,19 +7,19 @@
 <ion-header>
 
   <ion-row class="header-component">
-    <ion-col col-3></ion-col>
+    <ion-col col-2></ion-col>
 
-    <ion-col col-6>
+    <ion-col col-8>
       <ion-row class="full-height">
         <span class="home-title">
           Order
-        </span> &nbsp;
-        <ion-icon name="md-cart"></ion-icon>
+        </span>
       </ion-row>
     </ion-col>
 
-    <ion-col col-3>
+    <ion-col col-2>
       <ion-row class="full-height">
+        <ion-icon name="md-cart"></ion-icon>
       </ion-row>
     </ion-col>
 
@@ -28,7 +28,7 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content padding>
   <ion-row class="first-row">
     <ion-row class="total-price">
       <ion-col col-6>
@@ -57,22 +57,22 @@
         </ion-row>
 
         <ion-row class="company-name" *ngFor="let comList of list.productList; let i = index">
-          <ion-col col-3>
+          <ion-col col-2>
             <ion-row class="full-height">
-              <input matInput [(ngModel)]="comList.itemnumber" (keyup)="changeItemNumber(alphaIndex, i)" />
+              <input matInput [(ngModel)]="comList.itemnumber" (ionChange)="changeItemNumber(alphaIndex, i)" />
             </ion-row>
           </ion-col>
-          <ion-col col-6>
+          <ion-col col-8>
             <ion-row class="full-height">
-              <span class="company-name-span">
+              <span>
                 {{comList.productname}}
               </span>
             </ion-row>
           </ion-col>
-          <ion-col col-3>
+          <ion-col col-2>
             <ion-row class="full-height">
-              <span class="item-price-span">
-                {{comList.itemprice}}$
+              <span>
+                {{comList.itemprice}}
               </span>
             </ion-row>
           </ion-col>
@@ -82,31 +82,3 @@
 
   </ion-row>
 </ion-content>
-
-<ion-footer>
-  <ion-row class="footer-component">
-    <ion-col col-3>
-      <ion-row class="full-height">
-        <ion-row class="footer-icon" (click)="gotoPreviousPage()">
-          <ion-icon name="md-arrow-back"></ion-icon>
-        </ion-row>
-        <ion-row class="footer-span">
-          <span (click)="gotoPreviousPage()">BACK</span>
-        </ion-row>
-      </ion-row>
-    </ion-col>
-    <ion-col col-4></ion-col>
-    <ion-col col-5>
-      <ion-row class="full-height">
-        <ion-row class="footer-icon" (click)="gotoReview()">
-          <ion-icon name="ios-cart"></ion-icon>
-        </ion-row>
-        <ion-row class="footer-span">
-          <span (click)="gotoReview()">
-            Order Review
-          </span>
-        </ion-row>
-      </ion-row>
-    </ion-col>
-  </ion-row>
-</ion-footer>

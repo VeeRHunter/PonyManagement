@@ -26,19 +26,9 @@
 <ion-content padding>
   <ion-row class="first-row" *ngIf="enableShow">
     <ion-row class="profile-image">
-      <!-- <ion-row class="image-row">
-        <img src="{{productData.img}}" (click)="changeProfilePicture()" />
-      </ion-row> -->
-      <ion-row class="first-letter-product-name">
-        <ion-row class="border-line-circle">
-          <ion-row class="full-circle">
-            <span>
-              {{firstLetter}}
-            </span>
-          </ion-row>
-        </ion-row>
+      <ion-row class="image-row">
+        <img src="{{supplierData.img}}" (click)="changeProfilePicture()" />
       </ion-row>
-
       <ion-row class="image-title">
         <span>{{supplierData.companyname}}</span>
       </ion-row>
@@ -147,30 +137,3 @@
 
   </ion-row>
 </ion-content>
-<ion-footer>
-  <ion-row class="footer-component">
-    <ion-col col-3>
-      <ion-row class="full-height" (click)="clickBack()">
-        <ion-row class="footer-icon">
-          <ion-icon name="md-arrow-round-back"></ion-icon>
-        </ion-row>
-        <ion-row class="footer-span">
-          <span>BACK</span>
-        </ion-row>
-      </ion-row>
-    </ion-col>
-    <ion-col col-6></ion-col>
-    <ion-col col-3>
-      <ion-row class="full-height" (click)="gotoHome()">
-        <ion-row class="footer-icon">
-          <ion-icon name="ios-home"></ion-icon>
-        </ion-row>
-        <ion-row class="footer-span">
-          <span>
-            HOME
-          </span>
-        </ion-row>
-      </ion-row>
-    </ion-col>
-  </ion-row>
-</ion-footer>

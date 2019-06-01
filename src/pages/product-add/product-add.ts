@@ -133,17 +133,8 @@ export class ProductAddPage {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64 (DATA_URL):
       let base64Image = 'data:image/jpeg;base64,' + imageData;
-      let profileModal = this.modalCtrl.create('PhotoCropPage', { photo: base64Image });
-      profileModal.onDidDismiss(data => {
-        console.log(data);
-        if (data != null && typeof (data) != "undefined") {
-          this.productData.image = data;
-          this.loading.hide();
-        } else {
-          this.loading.hide();
-        }
-      });
-      profileModal.present();
+      this.productData.image = base64Image;
+      this.loading.hide();
 
     }, (err) => {
       console.log("unselect image");
@@ -171,17 +162,8 @@ export class ProductAddPage {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64 (DATA_URL):
       let base64Image = 'data:image/jpeg;base64,' + imageData;
-      let profileModal = this.modalCtrl.create('PhotoCropPage', { photo: base64Image });
-      profileModal.onDidDismiss(data => {
-        console.log(data);
-        if (data != null && typeof (data) != "undefined") {
-          this.productData.image = data;
-          this.loading.hide();
-        } else {
-          this.loading.hide();
-        }
-      });
-      profileModal.present();
+      this.productData.image = base64Image;
+      this.loading.hide();
     }, (err) => {
       // Handle error
       console.log("unselect image");

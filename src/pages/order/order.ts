@@ -17,8 +17,8 @@ import { DataProvider } from '../../providers/data/data';
 })
 export class OrderPage {
 
-  public totalItemNumber = "0";
-  public totalPrice = "0";
+  public totalItemNumber: any;
+  public totalPrice: any;
 
 
   public eachUser: any = {};
@@ -66,10 +66,9 @@ export class OrderPage {
               "companyname": this.eachUser[listPro].companyname,
               "userId": this.eachUser[listPro].userId,
               "quantity": this.eachUser[listPro].quantity,
-              "ordered": false,
               "price": this.eachUser[listPro].price,
-              "itemnumber": "0",
-              "itemprice": "0",
+              "itemnumber": 0,
+              "itemprice": 0,
               "img": this.eachUser[listPro].img
             };
             if (this.eachSupplier[listSup].companyname == this.eachUser[listPro].companyname) {
@@ -109,45 +108,25 @@ export class OrderPage {
 
   changeItemNumber(alphaIndex, proIndex) {
     console.log(this.alphaBeta[alphaIndex].productList[proIndex]);
-    let itemNum = this.alphaBeta[alphaIndex].productList[proIndex].itemnumber;
-    let itemPri = this.alphaBeta[alphaIndex].productList[proIndex].price;
-
-    if (itemNum == "") {
-      this.alphaBeta[alphaIndex].productList[proIndex].itemnumber = "0";
-    } else {
-      this.alphaBeta[alphaIndex].productList[proIndex].itemnumber =
-        parseFloat(this.alphaBeta[alphaIndex].productList[proIndex].itemnumber).toString();
-    }
     this.alphaBeta[alphaIndex].productList[proIndex].itemprice =
-      this.changeToDecimal(itemNum * itemPri);
+      this.changeToDecimal(this.alphaBeta[alphaIndex].productList[proIndex].itemnumber *
+        this.alphaBeta[alphaIndex].productList[proIndex].price);
     this.calculTotalPrice();
   }
 
   calculTotalPrice() {
-    this.totalPrice = "0";
-    this.totalItemNumber = "0";
     for (let list of this.alphaBeta) {
       for (let proList of list.productList) {
-        console.log(proList.itemprice);
-        console.log(proList.itemnumber);
-        this.totalPrice = (parseFloat(this.totalPrice) + parseFloat(proList.itemprice)).toString();
-        this.totalItemNumber = (parseFloat(this.totalItemNumber) + parseFloat(proList.itemnumber)).toString();
+        this.totalPrice = this.totalPrice + proList.price;
+        this.totalItemNumber = this.totalItemNumber + proList.itemnumber;
       }
     }
-    this.totalPrice = this.changeToDecimal(this.totalPrice);
-    this.totalItemNumber = parseFloat(this.totalItemNumber).toFixed(0);
+    console.log(this.totalItemNumber);
+    console.log(this.totalPrice);
   }
 
   changeToDecimal(inputData) {
     return parseFloat(inputData).toFixed(2);
-  }
-
-  gotoPreviousPage() {
-    this.navCtrl.pop();
-  }
-
-  gotoReview() {
-    this.navCtrl.push('OrderReviewPage', { orderData: this.alphaBeta });
   }
 
 }
