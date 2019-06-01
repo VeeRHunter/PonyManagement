@@ -31,6 +31,11 @@
 <ion-content>
   <ion-row class="first-row">
 
+    <ion-row class="search-row">
+      <ion-searchbar placeholder="Search Supplier by Name" [(ngModel)]="searchPro" (ionInput)="filterItems($event)">
+      </ion-searchbar>
+    </ion-row>
+
     <!-- <mat-expansion-panel class="expantion-list" *ngFor="let list of alphaBeta; let i = index;">
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -47,7 +52,7 @@
     </mat-expansion-panel> -->
 
     <ion-row class="expantion-list" [ngClass]="{'display-none':!list.enableShow, 'display-show':list.enableShow}"
-      *ngFor="let list of alphaBeta; let alphaIndex = index;">
+      *ngFor="let list of showList; let alphaIndex = index;">
       <ion-row *ngIf="list.enableShow">
         <ion-row class="exantion-title">
           <span>
