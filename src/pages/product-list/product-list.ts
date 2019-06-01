@@ -21,6 +21,9 @@ export class ProductListPage {
   public eachSupplier: any = {};
   public alphaBeta: any[];
   public productList: any[];
+  
+  public searchPro = '';
+  public showList: any[];
 
   constructor(
     public navCtrl: NavController,
@@ -64,8 +67,8 @@ export class ProductListPage {
             this.alphaBeta.push(supTemp);
           }
         }
-        console.log(this.productList);
         console.log(this.alphaBeta);
+        this.setShowList();
         this.loading.hide();
       });
     });
@@ -96,6 +99,61 @@ export class ProductListPage {
 
   gotoHome() {
     this.navCtrl.push('HomePage');
+  }
+
+  filterItems(ev: any) {
+    console.log(this.searchPro);
+    this.setShowList();
+  }
+
+  setShowList() {
+    this.showList = new Array();
+    if (this.searchPro == "") {
+      for (let list of this.alphaBeta) {
+        this.showList.push(list);
+      }
+    } else {
+      for (let list of this.alphaBeta) {
+        if (list.enableShow) {
+          let enablePush = false;
+          const temSupList = [
+          ];
+          for (let supList of list.productList) {
+            if (this.compareTwoString(supList.productname, this.searchPro)) {
+              enablePush = true;
+              let temm = {
+                'companyname': supList.companyname,
+                'img': supList.img,
+                'price': supList.price,
+                'product': supList.product,
+                'productname': supList.productname,
+                'quantity': supList.quantity,
+                'type': supList.type,
+                'userId': supList.userId
+              };
+              temSupList.push(temm);
+            }
+          }
+          if (enablePush) {
+            let tempBeta = { "companyname": list.companyname, "productList": temSupList, "enableShow": list.enableShow };
+            this.showList.push(tempBeta);
+          }
+        }
+      }
+    }
+  }
+
+  compareTwoString(str1, str2) {
+    let compareState = true;
+    for (let i = 0; i < str2.length; i++) {
+      if (i < str1.length - 1) {
+        if (str1.charAt(i).toLowerCase() == str2.charAt(i).toLowerCase()) {
+        } else {
+          compareState = false;
+        }
+      }
+    }
+    return compareState;
   }
 
 }

@@ -27,11 +27,13 @@ ion-row {
 
 .header-component {
     height: 50px;
+
     .home-title {
         margin: auto;
         font-size: 2.5rem;
         font-weight: bold;
     }
+
     ion-icon {
         margin: auto;
         font-size: 3rem;
@@ -49,6 +51,17 @@ ion-row {
     font-size: 3rem;
 }
 
+
+.search-row {
+    margin-bottom: 10px;
+
+    ion-searchbar {
+        span {
+            font-weight: initial !important;
+        }
+    }
+}
+
 .back-arrow {
     .menu-icon {
         color: #5d5d5d;
@@ -62,10 +75,12 @@ ion-row {
 
 ion-content {
     font-family: Georgia !important;
+
     mat-form-field {
         font-family: Georgia !important;
         font-weight: bold;
     }
+
     input {
         font-family: Georgia !important;
         font-weight: bold !important;
@@ -75,9 +90,11 @@ ion-content {
 .expantion-list {
     width: 100%;
     margin: 5px 0px;
+
     .exantion-title {
         background-color: #9fc5f8;
         padding: 5px 0px;
+
         span {
             padding-left: 7px;
             font-weight: bold;
@@ -86,12 +103,14 @@ ion-content {
             text-align: center;
         }
     }
+
     .company-name {
         background-color: white;
         padding: 3px 10px;
         width: 96%; // border-radius: 5px;
         margin-left: auto;
         margin-right: auto;
+
         span {
             padding: 3px 3px;
             border-bottom: 1px solid rgba(0, 0, 0, 0.3);
@@ -200,10 +219,12 @@ form {
     .mat-form-field-wrapper {
         padding-bottom: unset !important;
     }
+
     .mat-form-field-infix {
         padding: unset !important;
         border-top: unset !important;
     }
+
     .mat-input-underline {
         display: none;
     }
@@ -216,12 +237,14 @@ button {
 
 .footer-component {
     height: 70px;
+
     .footer-icon {
         ion-icon {
             font-size: 3rem;
             margin: auto;
         }
     }
+
     .footer-span {
         span {
             margin: auto;
@@ -233,12 +256,14 @@ button {
     .mat-expansion-panel-header {
         height: 30px !important;
         background-color: white;
+
         .mat-expansion-panel-header-title {
             text-align: center;
             display: block;
             margin-right: 0px;
         }
     }
+
     .mat-expansion-indicator {
         display: none;
     }
