@@ -84,7 +84,7 @@ export class SupplierListPage {
 
   gotoSupplierDetail(alphaIndex, supIndex) {
     console.log(this.supplierList[supIndex]);
-    localStorage.setItem('companyName', this.alphaBeta[alphaIndex].supList[supIndex].companyname)
+    localStorage.setItem('companyName', this.showList[alphaIndex].supList[supIndex].companyname)
     this.navCtrl.push('SupplierDetailPage');
   }
 

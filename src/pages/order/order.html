@@ -57,8 +57,7 @@
         </ion-col>
         <ion-col col-3>
           <ion-row class="full-height border-span">
-            <span class="margin-auto">
-              <!-- {{list.itemprice}} -->
+            <span class="margin-auto price-span example-full-width">
               {{list.itemprice | currency:"USD":'symbol':"1.1"}}
             </span>
           </ion-row>
@@ -105,7 +104,7 @@
   </ion-row>
 
   <ion-row class="order-text" *ngIf="step=='2'">
-    <textarea matInput class="margin-auto" placeholder="Add a Message" [(ngModel)]="commentItem"></textarea>
+    <textarea matInput placeholder="Add a Message" [(ngModel)]="commentItem"></textarea>
   </ion-row>
 
 
@@ -116,7 +115,7 @@
     <ion-col col-3>
       <ion-row class="full-height">
         <ion-row class="footer-icon">
-          <ion-icon name="ios-home" (click)="gotoHome()"></ion-icon>
+          <ion-icon name="ios-home" class="send-icon" (click)="gotoHome()"></ion-icon>
         </ion-row>
         <ion-row class="footer-span">
           <span (click)="gotoHome()">HOME</span>
@@ -127,7 +126,7 @@
     <ion-col col-5>
       <ion-row class="full-height" *ngIf="step=='2'">
         <ion-row class="footer-icon" (click)="gotoReview()">
-          <ion-icon name="send" class="angle-45"></ion-icon>
+          <ion-icon name="md-send" class="angle-45"></ion-icon>
         </ion-row>
         <ion-row class="footer-span">
           <span (click)="gotoReview()">

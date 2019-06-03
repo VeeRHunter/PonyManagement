@@ -38,6 +38,10 @@ page-order {
         .border-span {
             border: 1px solid black;
         }
+
+        .price-span {
+            font-size: 15px;
+        }
     }
 
     .total-price-number {
@@ -55,6 +59,8 @@ page-order {
             width: 80%;
             height: 100px;
             font-size: 16px;
+            border: 1px solid black;
+            margin: auto;
         }
     }
 }

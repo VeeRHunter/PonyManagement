@@ -92,8 +92,8 @@ export class ProductListPage {
   }
 
   gotoSupplierDetail(alphaIndex, proIndex) {
-    localStorage.setItem("product", this.alphaBeta[alphaIndex].productList[proIndex].product);
-    console.log(this.alphaBeta[alphaIndex].productList[proIndex].product);
+    localStorage.setItem("product", this.showList[alphaIndex].productList[proIndex].product);
+    console.log(this.showList[alphaIndex].productList[proIndex].product);
     this.navCtrl.push('ProductDetailPage');
   }
 
