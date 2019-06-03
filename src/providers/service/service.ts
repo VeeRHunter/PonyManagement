@@ -75,6 +75,28 @@ export class ServiceProvider {
 
   }
 
+  orderHistoryAdd(orderData) {
+
+    this.loading.show();
+
+    let user = firebase.auth().currentUser;
+
+    let dateCreated = new Date();
+
+    firebase.database().ref('orderHistory/' + orderData.companyname + dateCreated.getTime()).set({
+      product: orderData.companyname + dateCreated.getTime(),
+      companyname: orderData.companyname,
+      dateCreated: orderData.date,
+      userId: user.uid,
+      itemsnumber: orderData.itemsnumber,
+      itemsprice: orderData.itemsprice,
+      productList: orderData.productList
+    });
+    this.loading.hide();
+    this.navCtrl.push('PurchasePage');
+
+  }
+
   orderProduct(orderList) {
     this.loading.show();
     let user = firebase.auth().currentUser;

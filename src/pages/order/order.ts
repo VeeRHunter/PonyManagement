@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoadingProvider } from '../../providers/loading/loading';
 import { DataProvider } from '../../providers/data/data';
+import { ServiceProvider } from '../../providers/service/service';
+import { ToastProvider } from '../../providers/toast/toast';
+import { timestamp } from 'rxjs/operator/timestamp';
 
 /**
  * Generated class for the OrderPage page.
@@ -17,8 +20,8 @@ import { DataProvider } from '../../providers/data/data';
 })
 export class OrderPage {
 
-  public totalItemNumber = "0";
-  public totalPrice = "0";
+  public totalItemNumber = 0;
+  public totalPrice = 0;
 
 
   public eachUser: any = {};
@@ -27,6 +30,9 @@ export class OrderPage {
   public productList: any[];
 
   public selSuplier: any;
+  public step: string = '1';
+
+  public commentItem: string = '';
 
 
   constructor(
@@ -34,11 +40,16 @@ export class OrderPage {
     public navParams: NavParams,
     public loading: LoadingProvider,
     public dataProvider: DataProvider,
+    public service: ServiceProvider,
+    public toast: ToastProvider,
   ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrderPage');
+    this.service.setNavController(this.navCtrl);
+    let currentDate = new Date().toISOString();
+    console.log(currentDate.split('T')[0].split('-')[2] + '/' + currentDate.split('T')[0].split('-')[1] + '/' + currentDate.split('T')[0].split('-')[0]);
     this.getProductList();
   }
 
@@ -67,8 +78,8 @@ export class OrderPage {
               "quantity": this.eachUser[listPro].quantity,
               "ordered": false,
               "price": this.eachUser[listPro].price,
-              "itemnumber": "0",
-              "itemprice": "0",
+              "itemnumber": 0,
+              "itemprice": 0,
               "img": this.eachUser[listPro].img
             };
             if (this.eachSupplier[listSup].companyname == this.eachUser[listPro].companyname) {
@@ -88,8 +99,8 @@ export class OrderPage {
   }
 
   selectSup(index) {
-    console.log(this.alphaBeta[index]);
-    this.navCtrl.push('OrderReviewPage', { orderData: this.alphaBeta[index] });
+    this.selSuplier = this.alphaBeta[index];
+    this.step = '2';
   }
 
   dynamicSort(property) {
@@ -113,37 +124,6 @@ export class OrderPage {
     this.navCtrl.setRoot('HomePage');
   }
 
-  changeItemNumber(alphaIndex, proIndex) {
-    console.log(this.alphaBeta[alphaIndex].productList[proIndex]);
-    let itemNum = this.alphaBeta[alphaIndex].productList[proIndex].itemnumber;
-    let itemPri = this.alphaBeta[alphaIndex].productList[proIndex].price;
-
-    if (itemNum == "") {
-      this.alphaBeta[alphaIndex].productList[proIndex].itemnumber = "0";
-    } else {
-      this.alphaBeta[alphaIndex].productList[proIndex].itemnumber =
-        parseFloat(this.alphaBeta[alphaIndex].productList[proIndex].itemnumber).toString();
-    }
-    this.alphaBeta[alphaIndex].productList[proIndex].itemprice =
-      this.changeToDecimal(itemNum * itemPri);
-    this.calculTotalPrice();
-  }
-
-  calculTotalPrice() {
-    this.totalPrice = "0";
-    this.totalItemNumber = "0";
-    for (let list of this.alphaBeta) {
-      for (let proList of list.productList) {
-        console.log(proList.itemprice);
-        console.log(proList.itemnumber);
-        this.totalPrice = (parseFloat(this.totalPrice) + parseFloat(proList.itemprice)).toString();
-        this.totalItemNumber = (parseFloat(this.totalItemNumber) + parseFloat(proList.itemnumber)).toString();
-      }
-    }
-    this.totalPrice = this.changeToDecimal(this.totalPrice);
-    this.totalItemNumber = parseFloat(this.totalItemNumber).toFixed(0);
-  }
-
   changeToDecimal(inputData) {
     return parseFloat(inputData).toFixed(2);
   }
@@ -153,11 +133,67 @@ export class OrderPage {
   }
 
   gotoReview() {
-    this.navCtrl.push('OrderReviewPage', { orderData: this.alphaBeta });
+    // this.navCtrl.push('OrderReviewPage', { orderData: this.alphaBeta });
+    // this.navCtrl.push('PurchasePage');
+    console.log(this.commentItem);
+    if (this.totalPrice === 0) {
+      this.toast.show('Please add more than one product');
+    } else if (this.commentItem === '') {
+      this.toast.show('Please write some message');
+    } else {
+      let currentDate = new Date().toISOString();
+      const currentDateStr = currentDate.split('T')[0].split('-')[2] + '/' +
+        currentDate.split('T')[0].split('-')[1] + '/' + currentDate.split('T')[0].split('-')[0];
+      let supParam = {
+        'companyname': this.selSuplier.companyname,
+        'date': currentDateStr,
+        'itemsnumber': this.totalItemNumber,
+        'itemsprice': this.totalPrice,
+        'productList': []
+      }
+
+      for (let list of this.selSuplier.productList) {
+        if (list.itemnumber !== 0) {
+          supParam.productList.push(list);
+        }
+      }
+
+      this.service.orderHistoryAdd(supParam);
+    }
   }
 
-  clickCompany(index) {
-    this.navCtrl.push('OrderReviewPage', { orderData: this.alphaBeta[index] });
+  increaseItem(index) {
+    this.selSuplier.productList[index].itemnumber = this.selSuplier.productList[index].itemnumber + 1;
+    this.getTotalPrice(index);
+  }
+
+  decreaseItem(index) {
+    if (this.selSuplier.productList[index].itemnumber > 0) {
+      this.selSuplier.productList[index].itemnumber = this.selSuplier.productList[index].itemnumber - 1;
+      this.getTotalPrice(index);
+    }
+  }
+
+  getTotalPrice(index) {
+    this.getTotalItemNumber();
+    this.selSuplier.productList[index].itemprice =
+      this.selSuplier.productList[index].itemnumber * this.selSuplier.productList[index].price;
+    this.totalPrice = 0;
+    for (let list of this.selSuplier.productList) {
+      let currentPrice = list.itemnumber * list.price;
+      this.totalPrice = this.totalPrice + currentPrice;
+    }
+  }
+
+  getTotalItemNumber() {
+    this.totalItemNumber = 0;
+    for (let list of this.selSuplier.productList) {
+      this.totalItemNumber = this.totalItemNumber + list.itemnumber;
+    }
+  }
+
+  changeNumber(index) {
+    this.getTotalPrice(index);
   }
 
 }

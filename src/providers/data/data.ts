@@ -79,5 +79,11 @@ export class DataProvider {
     return this.angularfire.object('/product/' + product);
   }
 
+  getOrderHistory() {
+    this.loading.hide();
+    this.loading.show();
+    return this.angularfire.object('/orderHistory/');
+  }
+
 
 }

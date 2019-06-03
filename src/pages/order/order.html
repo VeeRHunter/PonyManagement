@@ -30,15 +30,85 @@
 
 <ion-content>
   <ion-row class="first-row">
-
     <mat-select required class="supplier-list" placeholder="Select Supplier">
       <mat-option *ngFor="let list of alphaBeta; let i = index" value="{{list.companyname}}" (click)="selectSup(i)">
         {{list.companyname}}
       </mat-option>
-
     </mat-select>
-
   </ion-row>
+
+  <ion-row *ngIf="step=='2'">
+    <ion-row class="product-list" *ngFor="let list of selSuplier.productList; let i = index">
+      <ion-row>
+        <ion-col col-2>
+          <ion-row class="full-height">
+            <ion-row>
+              <input class="margin-auto" type="number" min="0" [(ngModel)]="list.itemnumber"
+                (ngModelChange)="changeNumber(i)" />
+            </ion-row>
+          </ion-row>
+        </ion-col>
+        <ion-col col-7>
+          <ion-row class="full-height border-span">
+            <span class="margin-auto">
+              {{list.productname}}
+            </span>
+          </ion-row>
+        </ion-col>
+        <ion-col col-3>
+          <ion-row class="full-height border-span">
+            <span class="margin-auto">
+              <!-- {{list.itemprice}} -->
+              {{list.itemprice | currency:"USD":'symbol':"1.1"}}
+            </span>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+
+        <ion-row class="count-item">
+          <ion-col col-1 class="no-padding">
+            <ion-row class="full-height">
+              <span class="margin-auto" (click)="increaseItem(i)">
+                +
+              </span>
+            </ion-row>
+          </ion-col>
+          <ion-col col-1 class="no-padding">
+            <ion-row class="full-height">
+              <span class="margin-auto" (click)="decreaseItem(i)">
+                -
+              </span>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+
+      </ion-row>
+    </ion-row>
+  </ion-row>
+
+  <ion-row class="total-price-number" *ngIf="step=='2'">
+    <ion-col col-6>
+      <ion-row class="full-height">
+        <span class="top-bottom-auto">
+          {{totalItemNumber}} Items
+        </span>
+      </ion-row>
+    </ion-col>
+    <ion-col col-6>
+      <ion-row class="full-height">
+        <span class="margin-left-auto top-bottom-auto">
+          {{totalPrice | currency:"USD":'symbol':"1.2"}}
+        </span>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="order-text" *ngIf="step=='2'">
+    <textarea matInput class="margin-auto" placeholder="Add a Message" [(ngModel)]="commentItem"></textarea>
+  </ion-row>
+
+
 </ion-content>
 
 <ion-footer>
@@ -55,7 +125,7 @@
     </ion-col>
     <ion-col col-4></ion-col>
     <ion-col col-5>
-      <ion-row class="full-height">
+      <ion-row class="full-height" *ngIf="step=='2'">
         <ion-row class="footer-icon" (click)="gotoReview()">
           <ion-icon name="send" class="angle-45"></ion-icon>
         </ion-row>

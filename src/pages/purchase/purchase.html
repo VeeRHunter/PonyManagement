@@ -1,0 +1,43 @@
+<ion-content>
+  <ion-row class="full-height">
+    <ion-row class="margin-auto">
+      <ion-row>
+        <img src="assets/imgs/check.png" class="left-right-auto" />
+      </ion-row>
+      <ion-row class="check-text">
+        <span class="left-right-auto">
+          Thank you for your purchase
+        </span>
+      </ion-row>
+    </ion-row>
+  </ion-row>
+</ion-content>
+
+<ion-footer>
+  <ion-row class="footer-component">
+    <ion-col col-3>
+      <ion-row class="full-height">
+        <ion-row class="footer-icon">
+          <ion-icon name="ios-home" (click)="gotoHome()"></ion-icon>
+        </ion-row>
+        <ion-row class="footer-span">
+          <span (click)="gotoHome()">HOME</span>
+        </ion-row>
+      </ion-row>
+    </ion-col>
+    <ion-col col-4></ion-col>
+    <ion-col col-5>
+      <ion-row class="full-height">
+        <ion-row class="footer-icon" (click)="gotoHistory()">
+          <img class="footer-image margin-auto" src="assets/imgs/order-history.png" />
+
+        </ion-row>
+        <ion-row class="footer-span">
+          <span (click)="gotoHistory()">
+            Order History
+          </span>
+        </ion-row>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-footer>

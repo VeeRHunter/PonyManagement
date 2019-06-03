@@ -1,0 +1,24 @@
+page-order-history {
+    .border-row {
+        border-top: 1px solid black;
+    }
+
+    .arrow-icon {
+        font-size: 30px;
+    }
+
+    .order-history {
+        padding: 10px 5px;
+        cursor: pointer;
+
+        span {
+            font-weight: initial !important;
+            font-size: 15px;
+            padding: 3px 0px;
+        }
+
+        strong {
+            font-size: 18px;
+        }
+    }
+}

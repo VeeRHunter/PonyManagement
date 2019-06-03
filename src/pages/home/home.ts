@@ -68,4 +68,8 @@ export class HomePage {
     this.navCtrl.push('ProductSearchPage');
   }
 
+  gotoOrderHistory() {
+    this.navCtrl.push('OrderHistoryPage');
+  }
+
 }

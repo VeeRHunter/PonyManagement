@@ -41,6 +41,11 @@ ion-row {
     }
 }
 
+.header-img {
+    width: 30px;
+    height: 30px;
+}
+
 .full-height {
     height: 100%;
 }
@@ -60,6 +65,34 @@ ion-row {
             font-weight: initial !important;
         }
     }
+}
+
+.margin-auto {
+    margin: auto;
+}
+
+.top-bottom-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.left-right-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.margin-right-auto {
+    margin-right: auto;
+    margin-left: unset;
+}
+
+.margin-left-auto {
+    margin-left: auto;
+    margin-right: unset;
+}
+
+.no-padding {
+    padding: 0px !important;
 }
 
 .back-arrow {
