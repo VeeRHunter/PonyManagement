@@ -45,6 +45,7 @@ export class OrderReviewPage {
   getProductList() {
     this.alphaBeta = new Array();
     let param = this.navParams.get('orderData');
+    console.log(param);
 
     for (let list of param) {
       let supTemp = { "companyname": "", "productList": [], "enableShow": false };

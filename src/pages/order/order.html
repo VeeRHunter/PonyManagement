@@ -30,55 +30,13 @@
 
 <ion-content>
   <ion-row class="first-row">
-    <ion-row class="total-price">
-      <ion-col col-6>
-        <ion-row class="full-height">
-          <span class="left-element">
-            {{totalItemNumber}} Items
-          </span>
-        </ion-row>
-      </ion-col>
-      <ion-col col-6>
-        <ion-row class="full-height">
-          <span class="right-element">
-            {{totalPrice}}$
-          </span>
-        </ion-row>
-      </ion-col>
-    </ion-row>
 
-    <ion-row class="expantion-list" [ngClass]="{'display-none':!list.enableShow, 'display-show':list.enableShow}"
-      *ngFor="let list of alphaBeta; let alphaIndex = index;">
-      <ion-row *ngIf="list.enableShow">
-        <ion-row class="exantion-title">
-          <span>
-            {{list.companyname}}
-          </span>
-        </ion-row>
+    <mat-select required class="supplier-list" placeholder="Select Supplier">
+      <mat-option *ngFor="let list of alphaBeta; let i = index" value="{{list.companyname}}" (click)="selectSup(i)">
+        {{list.companyname}}
+      </mat-option>
 
-        <ion-row class="company-name" *ngFor="let comList of list.productList; let i = index">
-          <ion-col col-3>
-            <ion-row class="full-height">
-              <input matInput [(ngModel)]="comList.itemnumber" (keyup)="changeItemNumber(alphaIndex, i)" />
-            </ion-row>
-          </ion-col>
-          <ion-col col-6>
-            <ion-row class="full-height">
-              <span class="company-name-span">
-                {{comList.productname}}
-              </span>
-            </ion-row>
-          </ion-col>
-          <ion-col col-3>
-            <ion-row class="full-height">
-              <span class="item-price-span">
-                {{comList.itemprice}}$
-              </span>
-            </ion-row>
-          </ion-col>
-        </ion-row>
-      </ion-row>
-    </ion-row>
+    </mat-select>
 
   </ion-row>
 </ion-content>
@@ -87,11 +45,11 @@
   <ion-row class="footer-component">
     <ion-col col-3>
       <ion-row class="full-height">
-        <ion-row class="footer-icon" (click)="gotoPreviousPage()">
-          <ion-icon name="md-arrow-back"></ion-icon>
+        <ion-row class="footer-icon">
+          <ion-icon name="ios-home" (click)="gotoHome()"></ion-icon>
         </ion-row>
         <ion-row class="footer-span">
-          <span (click)="gotoPreviousPage()">BACK</span>
+          <span (click)="gotoHome()">HOME</span>
         </ion-row>
       </ion-row>
     </ion-col>
@@ -99,11 +57,11 @@
     <ion-col col-5>
       <ion-row class="full-height">
         <ion-row class="footer-icon" (click)="gotoReview()">
-          <ion-icon name="ios-cart"></ion-icon>
+          <ion-icon name="send" class="angle-45"></ion-icon>
         </ion-row>
         <ion-row class="footer-span">
           <span (click)="gotoReview()">
-            Order Review
+            Send
           </span>
         </ion-row>
       </ion-row>

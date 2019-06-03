@@ -26,6 +26,8 @@ export class OrderPage {
   public alphaBeta: any[];
   public productList: any[];
 
+  public selSuplier: any;
+
 
   constructor(
     public navCtrl: NavController,
@@ -46,13 +48,10 @@ export class OrderPage {
       this.alphaBeta = new Array();
       this.productList = new Array();
 
-      console.log(this.eachSupplier);
-
       this.dataProvider.getProductList().snapshotChanges().subscribe((result) => {
         this.eachUser = result.payload.val();
         this.productList = new Array();
         this.alphaBeta = new Array();
-        console.log(this.eachUser);
 
         for (var listSup in this.eachSupplier) {
           let supTemp = { "companyname": "", "productList": [], "enableShow": false };
@@ -83,11 +82,14 @@ export class OrderPage {
             this.alphaBeta.push(supTemp);
           }
         }
-        console.log(this.productList);
-        console.log(this.alphaBeta);
         this.loading.hide();
       });
     });
+  }
+
+  selectSup(index) {
+    console.log(this.alphaBeta[index]);
+    this.navCtrl.push('OrderReviewPage', { orderData: this.alphaBeta[index] });
   }
 
   dynamicSort(property) {
@@ -105,6 +107,10 @@ export class OrderPage {
         return a[property].localeCompare(b[property]);
       }
     }
+  }
+
+  gotoHome() {
+    this.navCtrl.setRoot('HomePage');
   }
 
   changeItemNumber(alphaIndex, proIndex) {
@@ -148,6 +154,10 @@ export class OrderPage {
 
   gotoReview() {
     this.navCtrl.push('OrderReviewPage', { orderData: this.alphaBeta });
+  }
+
+  clickCompany(index) {
+    this.navCtrl.push('OrderReviewPage', { orderData: this.alphaBeta[index] });
   }
 
 }

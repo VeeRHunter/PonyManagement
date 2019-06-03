@@ -60,7 +60,8 @@
           <ion-col col-3>
             <ion-row class="full-height">
               <ion-row class="check-order">
-                <mat-checkbox checked="comList.ordered" [(ngModel)]="comList.ordered" (ngModelChange)="checkOrderState(alphaIndex, i)">{{comList.itemnumber}}</mat-checkbox>
+                <mat-checkbox checked="comList.ordered" [(ngModel)]="comList.ordered"
+                  (ngModelChange)="checkOrderState(alphaIndex, i)">{{comList.itemnumber}}</mat-checkbox>
               </ion-row>
             </ion-row>
           </ion-col>
@@ -101,7 +102,7 @@
     <ion-col col-5>
       <ion-row class="full-height">
         <ion-row class="footer-icon">
-          <ion-icon name="ios-cart" (click)="orderProduct()"></ion-icon>
+          <ion-icon name="send" class="angle-45"></ion-icon>
         </ion-row>
         <ion-row class="footer-span">
           <span (click)="orderProduct()">

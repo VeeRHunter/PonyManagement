@@ -4,9 +4,11 @@ page-order {
         margin: 5px auto;
         font-size: 13px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+
         .exantion-title {
             background-color: #9fc5f8;
             padding: 5px 0px;
+
             span {
                 padding-left: 7px;
                 font-weight: bold;
@@ -15,12 +17,14 @@ page-order {
                 text-align: center;
             }
         }
+
         .company-name {
             background-color: white;
             padding: unset;
             width: 96%;
             margin-left: auto;
             margin-right: auto; // span {
+
             //     // padding: 3px 3px;
             //     border: unset;
             //     width: 100%;
@@ -33,6 +37,7 @@ page-order {
                 margin: auto;
                 text-align: center;
             }
+
             .item-price-span {
                 border: 1px solid;
                 width: 100%;
@@ -42,6 +47,7 @@ page-order {
                 border: 1px solid rgba(0, 0, 0, 0.3);
             }
         }
+
         input {
             // border: unset;
             width: 100%;
@@ -51,19 +57,31 @@ page-order {
             border: 1px solid rgba(0, 0, 0, 0.3);
         }
     }
+
     .total-price {
         border-top: 1px solid black;
         border-bottom: 1px solid black;
+
         .left-element {
             margin-top: auto;
             margin-bottom: auto;
             margin-right: auto;
         }
+
         .right-element {
             margin-top: auto;
             margin-bottom: auto;
             margin-left: auto;
             padding-right: 5px;
         }
+    }
+
+    .supplier-list {
+        width: 80%;
+        margin: auto;
+        margin-top: 30px;
+        border: 1px solid black;
+        padding: 10px 5px;
+        font-size: 16px;
     }
 }
