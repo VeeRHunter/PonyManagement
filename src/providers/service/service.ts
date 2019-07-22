@@ -85,6 +85,7 @@ export class ServiceProvider {
 
     firebase.database().ref('orderHistory/' + orderData.companyname + dateCreated.getTime()).set({
       product: orderData.companyname + dateCreated.getTime(),
+      orderIndex: dateCreated.getTime(),
       companyname: orderData.companyname,
       dateCreated: orderData.date,
       userId: user.uid,
